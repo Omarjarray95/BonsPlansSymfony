@@ -1,0 +1,707 @@
+main_homepage:
+    path:     /Home
+    defaults: { _controller: MainBundle:Default:index }
+dashboard:
+    path:     /HomeAdmin/Dash
+    defaults: { _controller: GrapheBundle:Default:Pie }
+
+main_homepage_admin:
+    path:     /HomeAdmin
+    defaults: { _controller: MainBundle:Default:indexAdmin }
+
+a_propos:
+    path:     /APropos
+    defaults: { _controller: MainBundle:Default:apropos }
+
+contact:
+    path:     /Contact
+    defaults: { _controller: MailBundle:Mail:index }
+
+Ajouter_Etablissement_Admin:
+    path:     /AjouterEtablissementAdmin
+    defaults: { _controller: MainBundle:Etablissement:Ajout }
+
+Afficher_Etablissement_Admin:
+    path:     /AfficherEtablissementAdmin
+    defaults: { _controller: MainBundle:Etablissement:Affiche }
+
+Modifier_Etablissement_Admin:
+    path:     /ModifierEtablissementAdmin/{id}
+    defaults: { _controller: MainBundle:Etablissement:Modif }
+
+Afficher_Etablissement_ParId_Admin:
+    path:     /AfficherEtablissementParIdAdmin/{id}
+    defaults: { _controller: MainBundle:Etablissement:AfficheId }
+
+Supprimer_Etablissement_Admin:
+    path:     /SupprimerEtablissementAdmin/{id}
+    defaults: { _controller: MainBundle:Etablissement:Supp }
+
+Modifier_Etablissement_Photo_Admin:
+    path:     /ModifierEtablissementPhotoAdmin/{id}
+    defaults: { _controller: MainBundle:Etablissement:ModifPhoto }
+
+Filtrer_Etablissement:
+    path:     /FiltrerEtablissement/{critere}
+    defaults: { _controller: MainBundle:Etablissement:Filtre }
+
+Trier_Etablissement:
+    path:     /TrierEtablissement/{critere}
+    defaults: { _controller: MainBundle:Etablissement:Tri }
+
+Rechercher_Etablissement:
+    path:     /RechercherEtablissement
+    defaults: { _controller: MainBundle:Etablissement:Recherche }
+
+Ajouter_Etablissement_Client:
+    path:     /AjouterEtablissementClient
+    defaults: { _controller: MainBundle:Etablissement:AjoutC }
+
+Afficher_Etablissement_Client:
+    path:     /AfficherEtablissementClient/{id}
+    defaults: { _controller: MainBundle:Etablissement:AfficheC }
+
+Rechercher_Etablissement_Client:
+    path:     /RechercherEtablissementClient/{critere}
+    defaults: { _controller: MainBundle:Etablissement:RechercherC }
+
+Trier_Etablissement_Client:
+    path:     /TrierEtablissementClient/{critere1}/{critere2}
+    defaults: { _controller: MainBundle:Etablissement:TriC }
+
+Rechercher_Etablissement_Nom:
+    path:     /RechercherEtablissementNom/{critere2}
+    defaults: { _controller: MainBundle:Etablissement:RechercheCN }
+
+Ajouter_Tag_Representant:
+    path:     /AjouterTag/{id}
+    defaults: { _controller: MainBundle:Tag:Ajout }
+
+Supprimer_Tag_Representant:
+    path:     /SupprimerTag/{id}/{id1}
+    defaults: { _controller: MainBundle:Tag:Supp }
+
+Rechercher_Etablissement_Tag:
+    path:     /RechercherEtablissementTag/{tag}
+    defaults: { _controller: MainBundle:Etablissement:RechercheT }
+
+modifier_etablissement:
+    path:     /ModifierEtablissement/{id}
+    defaults: { _controller: MainBundle:Etablissement:Modif }
+
+supprimer_etablissement:
+    path:     /SupprimerEtablissement/{id}
+    defaults: { _controller: MainBundle:Etablissement:Supp }
+
+main_bundle_get_notif:
+    path:     /notifications/get
+    defaults: { _controller: MainBundle:Notifications:get }
+
+main_bundle_show_notif:
+    path:     /notifications/show
+    defaults: { _controller: MainBundle:Notifications:show }
+
+Json_Etab:
+    path:     /JE/{nom}/{critere}
+    defaults: { _controller: MainBundle:Etablissement:RechercheNom }
+
+JSON_Etab_Filtre:
+    path:     /JEF/{critere}
+    defaults: { _controller: MainBundle:Etablissement:FiltrerC }
+
+Google_Maps:
+    path:     /Map/{type}
+    defaults: { _controller: MainBundle:Default:GM }
+
+
+
+all_offres_user:
+    path:     /offresUser
+    defaults: { _controller: MainBundle:Offre:AfficheAllUser }
+
+all_offres_Admin:
+    path:     /offresAdmin
+    defaults: { _controller: MainBundle:Offre:AfficheAllAdmin }
+
+profile_offre_user:
+    path:     /offreUser/{id}
+    defaults: { _controller: MainBundle:Offre:AfficheIdOffreUser }
+
+profile_offre_admin:
+    path:     /offreAdmin/{id}
+    defaults: { _controller: MainBundle:Offre:AfficheIdOffreAdmin }
+
+all_etab_offre_user:
+    path:     /offreEtab/{id_etab}
+    defaults: { _controller: MainBundle:Offre:AfficheOffresUserIdEtab}
+
+all_etab_offres_admin:
+    path:     /offresAdminEtab/{id_etab}
+    defaults: { _controller: MainBundle:Offre:AfficheOffresAdminIdEtab}
+
+add_offre:
+    path:     /offreAdd/{id}
+    defaults: { _controller: MainBundle:Offre:Ajout }
+
+add_offre_admin:
+    path:     /offreAddAdmin/{id}
+    defaults: { _controller: MainBundle:Offre:AjoutAdmin }
+
+update_offre:
+    path:     /offreUpdate/{id}
+    defaults: { _controller: MainBundle:Offre:Update }
+
+delete_offre:
+    path:     /offreDelete/{id}
+    defaults: { _controller: MainBundle:Offre:Remove }
+
+delete_offre_admin:
+    path:     /offreDelete/{id}
+    defaults: { _controller: MainBundle:Offre:RemoveAdmin }
+
+all_events_user:
+    path:     /eventsUser
+    defaults: { _controller: MainBundle:Evenement:AfficheAllUser }
+
+all_events_Admin:
+    path:     /eventsAdmin
+    defaults: { _controller: MainBundle:Evenement:AfficheAllAdmin }
+
+profile_event_user:
+    path:     /eventUser/{id_event}
+    defaults: { _controller: MainBundle:Evenement:AfficheIdEventUser }
+
+profile_event_admin:
+    path:     /eventAdmin/{id_event}
+    defaults: { _controller: MainBundle:Evenement:AfficheIdEventAdmin }
+
+all_etab_events_user:
+    path:     /eventsEtab/{id_etab}
+    defaults: { _controller: MainBundle:Evenement:AfficheEventsUserIdEtab }
+
+all_etab_events_admin:
+    path:     /eventsAdminEtab/{id_etab}
+    defaults: { _controller: MainBundle:Evenement:AfficheEventsAdminIdEtab}
+
+add_event:
+    path:     /eventAdd/{id}
+    defaults: { _controller: MainBundle:Evenement:Add }
+
+add_event_admin:
+    path:     /eventAddAdmin/{id}
+    defaults: { _controller: MainBundle:Evenement:AddAdmin }
+
+update_event:
+    path:     /eventUpdate/{id}
+    defaults: { _controller: MainBundle:Evenement:Update }
+
+delete_event:
+    path:     /eventDelete/{id}
+    defaults: { _controller: MainBundle:Evenement:Remove }
+
+delete_event_admin:
+    path:     /SupprimerEvenementAdmin/{id}
+    defaults: { _controller: MainBundle:Evenement:RemoveAdmin }
+delete_event_admin_etab:
+    path:     /SupprimerEvenementAdminEtab/{id}
+    defaults: { _controller: MainBundle:Evenement:RemoveEtabAdmin }
+
+ajax_wish:
+    path:     /getWishList/{id}
+    defaults: { _controller: MainBundle:Wishlist:getWishList }
+
+ajouter_wish:
+    path:     /AjouterWish/{id}
+    defaults: { _controller: MainBundle:Wishlist:addWishAjax }
+
+delete_wish:
+      path:     /RetirerWish/{id}
+      defaults: { _controller: MainBundle:Wishlist:deleteWishAjax }
+
+affiche_wish:
+      path:     /VoirWishs
+      defaults: { _controller: MainBundle:Wishlist:AfficheWish }
+
+
+
+ajouter_visited:
+    path:     /AjouterVisited/{id}
+    defaults: { _controller: MainBundle:Visited:addVisitedAjax }
+
+delete_visited:
+      path:     /RetirerVisited/{id}
+      defaults: { _controller: MainBundle:Visited:deleteVisitAjax}
+
+affiche_visited:
+      path:     /VoirVisited
+      defaults: { _controller: MainBundle:Visited:AfficheVisited}
+
+affiche_demande_partenariat:
+      path:     /VoirPartenariat
+      defaults: { _controller: MainBundle:DemandePartenariat:Affiche}
+
+ajout_demande_partenariat:
+      path:     /AjoutPartenariat/{id}
+      defaults: { _controller: MainBundle:DemandePartenariat:AjoutDemande}
+
+
+annuler_demande_partenariat:
+      path:     /annulerPartenariat/{id}
+      defaults: { _controller: MainBundle:DemandePartenariat:AnnulerDemande}
+
+all_demandes_partenariat_admin:
+      path:     /adminDemandesPartenariat
+      defaults: { _controller: MainBundle:DemandePartenariat:AfficherAdmin}
+
+accepter_demande_partenariat:
+    path:     /AccpeterDemandepartenariat/{id}
+    defaults: { _controller: MainBundle:DemandePartenariat:AccepterAdmin }
+
+annuler_demande_partenariat_admin:
+      path:     /annulerPartenariatAdmin/{id}
+      defaults: { _controller: MainBundle:DemandePartenariat:RefuserAdmin}
+mes_partenaires:
+      path:     /partenaires
+      defaults: { _controller: MainBundle:DemandePartenariat:AfficherTout}
+
+ajouter_going:
+    path:     /AjouterGoing/{id}
+    defaults: { _controller: MainBundle:GoingEvents:addGoingAjax }
+
+delete_going:
+      path:     /RetirerGoing/{id}
+      defaults: { _controller: MainBundle:GoingEvents:deleteGoingAjax}
+
+affiche_going:
+      path:     /VoirGoing
+      defaults: { _controller: MainBundle:GoingEvents:AfficheGoingEvent}
+
+contacter_partenaire:
+      path:     /contacterPartenaire/{id}
+      defaults: { _controller: MainBundle:DemandePartenariat:Contacter}
+
+ajouter_interest:
+    path:     /AjouterInterest/{id}
+    defaults: { _controller: MainBundle:Interested:addInterestedAjax}
+
+delete_interest:
+      path:     /RetirerInerest/{id}
+      defaults: { _controller: MainBundle:Interested:deleteInterestAjax}
+
+affiche_interest:
+      path:     /VoirInterest
+      defaults: { _controller: MainBundle:Interested:AfficheInterestEvent}
+
+affiche_events_visites:
+      path:     /VoirEventsVisited
+      defaults: { _controller: MainBundle:Interested:AfficheInterestEvent}
+
+main_bundle_new:
+    path:     /AjouterCommentaire2
+    defaults: { _controller: MainBundle:Commentaire:new }
+
+
+
+show_responsable:
+    path:     /ShowMine
+    defaults: { _controller: MainBundle:Etablissement:getMine }
+
+
+main_bundle_ajouut:
+    path:     /Ajouut/{id}
+    defaults: { _controller: MainBundle:Commentaire1:Ajouut }
+
+main_bundle_show_commentaires:
+    path:     /showC
+    defaults: { _controller: MainBundle:Commentaire1:showCommentaires }
+
+main_bundle_UpdateC:
+    path:     /Update/{id}
+    defaults: { _controller: MainBundle:Commentaire1:Update }
+
+main_bundle_DeleteC:
+    path:     /Delete/{id}
+    defaults: { _controller: MainBundle:Commentaire1:Delete }
+
+main_bundle_SignalerC:
+    path:     /Signaler/{id}
+    defaults: { _controller: MainBundle:Commentaire1:Signaler }
+
+rating:
+    path:     /rating{id}
+    defaults: { _controller: MainBundle:Etablissement:rating}
+
+main_bundle_ajout_demande:
+    path:     /AjouterDemande
+    defaults: { _controller: MainBundle:Demande:AjoutDemande }
+
+main_bundle_afficher_demande:
+    path:     /ListeDemandes
+    defaults: { _controller: MainBundle:Demande:AfficherDemande }
+
+main_bundle_annuler_demande:
+    path:     /Annuler/{id}
+    defaults: { _controller: MainBundle:Demande:AnnulerDemande }
+
+allReclamations:
+    path:     /Reclamations
+    defaults: { _controller: MainBundle:Reclamation:AfficheAllAdmin }
+
+all_demandes:
+    path:     /Demandes
+    defaults: { _controller: MainBundle:Demande:AfficherAdmin }
+
+accepter_demande:
+    path:     /AccpeterDemandes/{id}
+    defaults: { _controller: MainBundle:Etablissement:AccepterAdmin }
+
+refuser_demande:
+    path:     /RefuserDemandes/{id}
+    defaults: { _controller: MainBundle:Demande:RefuserAdmin }
+
+supprimer_recl_admin:
+    path:     /ReclamationsSupp/{id}
+    defaults: { _controller: MainBundle:Reclamation:DeleteAdmin }
+
+allReclamations_chercher_admin:
+    path:     /Reclamations-chercher/
+    defaults: { _controller: MainBundle:Reclamation:chercherlAdmin }
+
+main_bundle_modifier_demande:
+    path:     /Modifier/{id}
+    defaults: { _controller: MainBundle:Demande:ModifierDemande }
+
+main_bundle_ajouter_reclamation:
+    path:     /AjouterReclamation
+    defaults: { _controller: MainBundle:Reclamation:AjouterReclamation }
+
+main_bundle_afficher_messages:
+    path:     /AfficherMessages/{id_user}
+    defaults: { _controller: MainBundle:Reclamation:AfficherMessages }
+
+main_bundle_mes_reclamations:
+    path:     /mes-reclamations
+    defaults: { _controller: MainBundle:Reclamation:mesReclamations }
+
+ajout_reservation:
+    path:     /AjoutRes/{id1}/{id2}
+    defaults: { _controller: MainBundle:Reservation:Ajout }
+
+affiche_reservation:
+    path:     /AfficheRes/{id1}
+    defaults: { _controller: MainBundle:Reservation:Affiche }
+
+affiche_reservation_client:
+    path:     /AfficheR/{id1}
+    defaults: { _controller: MainBundle:Reservation:AfficheC }
+
+delete_reservation:
+    path:     /DeleteRes/{id1}/{id2}
+    defaults: { _controller: MainBundle:Reservation:Delete }
+
+update_reservation:
+    path:     /UpdateRes{id1}/{id2}
+    defaults: { _controller: MainBundle:Reservation:Update }
+
+recherche_reservation:
+    path:     /RechercheDate
+    defaults: { _controller: MainBundle:Reservation:Recherche }
+
+recherche_res:
+    path:     /RechercheNom
+    defaults: { _controller: MainBundle:Reservation:RechercheN }
+
+ajout_experience:
+    path:     /AjoutEx{id1}/{id2}
+    defaults: { _controller: MainBundle:SharedExperience:Ajout }
+
+delete_experience:
+    path:     /DeleteEx{id1}/{id2}
+    defaults: { _controller: MainBundle:SharedExperience:Delete }
+
+update_experience:
+    path:     /UpdateEx{id1}/{id2}
+    defaults: { _controller: MainBundle:SharedExperience:Update }
+
+affiche_experience:
+    path:     /AfficheEx
+    defaults: { _controller: MainBundle:SharedExperience:Affiche }
+
+
+
+
+all_events_user_json:
+    path:     /mobile/events
+    defaults: { _controller: MainBundle:Evenement:AfficheAllEventsJson }
+
+all_events_etab_json:
+    path:     /mobile/eventsEtab/{id_etab}
+    defaults: { _controller: MainBundle:Evenement:AfficheEtabEventsJson }
+
+all_offres_etab_json:
+    path:     /mobile/offresEtab/{id_etab}
+    defaults: { _controller: MainBundle:Offre:AfficheEtabOffresJson }
+
+all_offres_user_json:
+    path:     /mobile/offres
+    defaults: { _controller: MainBundle:Offre:AfficheAllOffresJson }
+
+event_json_json:
+    path:     /mobile/event/{id_event}
+    defaults: { _controller: MainBundle:Evenement:findEventByIdJson }
+
+offre_json_json:
+    path:     /mobile/offre/{id_offre}
+    defaults: { _controller: MainBundle:Offre:findOffreByIdJson }
+
+add_event_json:
+    path:     /mobile/addEvent/{id_etab}/{date}/{nom}/{description}
+    defaults: { _controller: MainBundle:Evenement:AddEventJson }
+
+add_offre_sans_json:
+    path:     /mobile/addOffreSans/{id_etab}/{deb}/{fin}/{name}/{des}
+    defaults: { _controller: MainBundle:Offre:AddOffreSansPromoJson }
+add_offre_avec_json:
+    path:     /mobile/addOffreAvec/{id_etab}/{deb}/{fin}/{name}/{des}/{code}/{pour}
+    defaults: { _controller: MainBundle:Offre:AddOffreAvecPromoJson }
+
+
+add_demande_partenariat_json:
+    path:     /mobile/sendRequestPartnerShip/{id}/{des}
+    defaults: { _controller: MainBundle:DemandePartenariat:AjoutDemandeJson }
+
+add_going_json:
+    path:     /mobile/addGoing/{id_event}/{id_user}
+    defaults: { _controller: MainBundle:GoingEvents:addGoingJson }
+
+add_interest_json:
+    path:     /mobile/addInterest/{id_event}/{id_user}
+    defaults: { _controller: MainBundle:Interested:addInterestedJson}
+
+delete_going_json:
+    path:     /mobile/deleteGoing/{id_event}/{id_user}
+    defaults: { _controller: MainBundle:GoingEvents:deleteGoingJson }
+
+check_interest_json:
+    path:     /mobile/checkInterest/{id_event}/{id_user}
+    defaults: { _controller: MainBundle:Interested:checkJson }
+
+check_going_json:
+    path:     /mobile/checkGoing/{id_event}/{id_user}
+    defaults: { _controller: MainBundle:GoingEvents:checkJson }
+
+delete_interest_json:
+    path:     /mobile/deleteInterest/{id_event}/{id_user}
+    defaults: { _controller: MainBundle:Interested:deleteInterestedJson }
+
+affiche_going_json:
+    path:     /mobile/showGoings/{id_user}
+    defaults: { _controller: MainBundle:GoingEvents:AfficheGoingEventJson }
+
+affiche_interest_json:
+    path:     /mobile/showInterests/{id_user}
+    defaults: { _controller: MainBundle:Interested:AfficheInterestedEventJson }
+
+add_like_json:
+    path:     /mobile/addWish/{id_etab}/{id_user}
+    defaults: { _controller: MainBundle:Wishlist:addWishJson }
+
+delete_like_json:
+    path:     /mobile/deleteWish/{id_etab}/{id_user}
+    defaults: { _controller: MainBundle:Wishlist:deleteWishJson }
+
+check_like_json:
+    path:     /mobile/checkWish/{id_etab}/{id_user}
+    defaults: { _controller: MainBundle:Wishlist:checkWishJson }
+
+add_visit_json:
+    path:     /mobile/addV/{id_etab}/{id_user}
+    defaults: { _controller: MainBundle:Visited:addVJson }
+
+delete_visit_json:
+    path:     /mobile/deleteV/{id_etab}/{id_user}
+    defaults: { _controller: MainBundle:Visited:deleteVJson }
+
+check_visit_json:
+    path:     /mobile/checkV/{id_etab}/{id_user}
+    defaults: { _controller: MainBundle:Visited:checkVJson }
+
+check_D_json:
+    path:     /mobile/checkD/{id_etab}
+    defaults: { _controller: MainBundle:DemandePartenariat:checkDJson }
+
+
+affiche_visits_json:
+    path:     /mobile/showVisits/{id_user}
+    defaults: { _controller: MainBundle:Visited:AfficheVisitsJson }
+
+affiche_liked_json:
+    path:     /mobile/showLikes/{id_user}
+    defaults: { _controller: MainBundle:Wishlist:AfficheLikesJson }
+count_likes_json:
+    path:     /mobile/countLikes/{id_etab}
+    defaults: { _controller: MainBundle:Wishlist:countJson }
+
+count_visits_json:
+    path:     /mobile/countVisits/{id_etab}
+    defaults: { _controller: MainBundle:Visited:countJson }
+
+chercher_event:
+    path:     /mobile/Chercherevents/{mot}
+    defaults: { _controller: MainBundle:Evenement:ChercherEvent }
+chercher_offre:
+    path:     /mobile/Chercheroffres/{mot}
+    defaults: { _controller: MainBundle:Offre:ChercherOffre }
+
+update_event_json:
+    path:     /mobile/updateEvent/{id_event}/{date}/{nom}/{description}
+    defaults: { _controller: MainBundle:Evenement:updateEventJson }
+
+delete_event_json:
+    path:     /mobile/deleteEvent/{id_event}
+    defaults: { _controller: MainBundle:Evenement:deleteEventJson }
+
+update_offreAvec_json:
+    path:     /mobile/updateOffreAvecPromoJson/{id_offre}/{deb}/{fin}/{name}/{des}/{code}/{pour}
+    defaults: { _controller: MainBundle:Offre:updateOffreAvecPromoJson }
+
+update_offreSans_json:
+    path:     /mobile/updateOffreSansPromoJson/{id_offre}/{deb}/{fin}/{name}/{des}
+    defaults: { _controller: MainBundle:Offre:updateOffreSansPromoJson }
+
+delete_offre_json:
+    path:     /mobile/deleteOffre/{id_offre}
+    defaults: { _controller: MainBundle:Offre:deleteOffreJson }
+apt_ws:
+      path:     /aptws/{critere}
+      defaults: { _controller: MainBundle:Etablissement:AffichageParTypeWebService}
+
+adae_ws:
+      path:     /adaews
+      defaults: { _controller: MainBundle:Demande:AjoutWebService}
+
+mie_ws:
+      path:     /miews
+      defaults: { _controller: MainBundle:Etablissement:ModificationEtablissementWebService}
+
+se_ws:
+      path:     /sews/{id}
+      defaults: { _controller: MainBundle:Etablissement:SuppressionEtablissementWebService}
+get_mine_json:
+      path:     /getMineJson/{id_user}
+      defaults: { _controller: MainBundle:Etablissement:getMineJson}
+
+add_reserv_autre:
+    path:     /addReservA/{id_etab}/{id_user}/{nom}/{prenom}/{numtel}/{nbrper}/{date}
+    defaults: { _controller: MainBundle:Reservation:AjoutAutreJson }
+
+supprimer_reserv:
+    path:     /delete/{id}
+    defaults: { _controller: MainBundle:Reservation:SuppressionReservationJson }
+
+modif_reserv:
+    path:    /update/{id}/{id_etab}/{id_user}/{nom}/{prenom}/{numtel}/{nbrper}/{date}
+    defaults: { _controller: MainBundle:Reservation:ModificationReservationJson }
+
+findNom:
+    path:   /findNom/{nom}
+    defaults: { _controller: MainBundle:Reservation:findNomJson }
+
+findUser:
+    path:   /findUser/{id_user}
+    defaults: { _controller: MainBundle:Reservation:findReservUserJson }
+
+findEtab:
+    path:   /findEtab/{id_etab}
+    defaults: { _controller: MainBundle:Reservation:findReservEtabJson }
+all_reservation:
+    path:     /all
+    defaults: { _controller: MainBundle:Reservation:all }
+
+find:
+    path:     /find/{id}
+    defaults: { _controller: MainBundle:Reservation:find }
+
+find_mot:
+    path:     /findMot/{mot}/{id_etab}
+    defaults: { _controller: MainBundle:Reservation:findMot }
+
+main_bundle_afficher_web_service:
+    path:     /RecWebSer/{id}
+    defaults: { _controller: MainBundle:Reclamation:AffichageWebService }
+
+main_bundle_afficher_users_web_service:
+    path:     /UserWebSer
+    defaults: { _controller: MainBundle:Default:AffichageUsersWebService }
+
+main_bundle_add_reclamation_web_ser:
+    path:     /AddRecWebSer/{idu}/{sujet}/{contenu}/{ide}
+    defaults: { _controller: MainBundle:Reclamation:AddReclamationWebSer }
+
+main_bundle_add_user_web_service:
+    path:     /AddUserWebSer/{nom}/{sexe}/{ville}/{phone}/{email}/{username}/{password}
+    defaults: { _controller: MainBundle:User:AddUserServiceWeb }
+
+main_bundle_login_web_service:
+    path:     /LoginWebSer/{email}/{pass}
+    defaults: { _controller: MainBundle:User:LoginWebService }
+
+main_bundle_delete_user_web_service:
+    path:     /DeleteUsWebSer/{id}
+    defaults: { _controller: MainBundle:User:DeleteUserWebService }
+
+main_bundle_user_web_service:
+    path:     /UsWebSer
+    defaults: { _controller: MainBundle:User:UserWebService }
+
+main_bundle_etabs_web_service:
+    path:     /EtabsWebSer
+    defaults: { _controller: MainBundle:Etablissement:EtabsWebService }
+
+main_bundle_nom_etab_web_service:
+    path:     /EtabRechWebSer/{nom}
+    defaults: { _controller: MainBundle:Etablissement:EtabNomWebService }
+
+main_bundle_rec_id_web_service:
+    path:     /recidetabwebser/{ide}
+    defaults: { _controller: MainBundle:Reclamation:RecIdWebService }
+
+main_bundle_modifier_user_web_service:
+    path:     /modifUsWebSer
+    defaults: { _controller: MainBundle:User:ModificationUserWebService }
+
+main_bundle_delete_etab_web_service:
+    path:     /deleteetab/{id}
+    defaults: { _controller: MainBundle:Etablissement:DeleteEtabWebService }
+
+affiche_commentaire_web_service:
+    path:     /AfficheService/{idetab}
+    defaults: { _controller: MainBundle:Commentaire1:AffichageCommentaireWebService}
+
+add_commentaire_json:
+    path:     /mobil/addCommentaire/{comment}/{idetab}/{iduser}
+    defaults: { _controller: MainBundle:Commentaire1:AddCommentaireJson }
+
+supp_commentaire_json:
+    path:     /mobil/suppCommentaire/{id}
+    defaults: { _controller: MainBundle:Commentaire1:SuppCommentaireJson }
+
+modif_commentaire_json:
+    path:     /mobil/modifCommentaire/{id}/{comment}
+    defaults: { _controller: MainBundle:Commentaire1:ModifCommentaireJson }
+
+aime_cool_json:
+    path:     /mobil/addEvalluationAC/{idetab}/{iduser}
+    defaults: { _controller: MainBundle:EvaluationEtablissement:AimeCoolJson }
+
+aime_nulle_json:
+    path:     /mobil/addEvalluationAN/{idetab}/{iduser}
+    defaults: { _controller: MainBundle:EvaluationEtablissement:AimeNulleJson }
+
+pas_aime_cool_json:
+    path:     /mobil/addEvalluationPC/{idetab}/{iduser}
+    defaults: { _controller: MainBundle:EvaluationEtablissement:PasAimeCoolJson }
+
+pas_aime_nulle_json:
+    path:     /mobil/addEvalluationPN/{idetab}/{iduser}
+    defaults: { _controller: MainBundle:EvaluationEtablissement:PasAimeNulleJson }

@@ -1,0 +1,42 @@
+
+{% extends 'Base.html.twig' %}
+
+{% block AjouterEtablissement %}
+    <section id="reservation" class="reservation_section bg-grey">
+        <div class="container padding">
+            <section id="main-content">
+                <section class="wrapper">
+                    <div class="row">
+                        <div class="col-lg-12 col-sm-offset-0">
+                            <section class="panel" id="ABC">
+                                <header class="panel-heading">
+                                    <form method="post">
+                                        <p>Veuillez nous indiquer pourquoi vous venez de signaler ce commentaire :</p>
+                                        <div>
+                                            <input type="radio" id="Choice1"
+                                                   name="contact" value="spam" required>
+                                            <label for="Choice1">Spam</label>
+
+                                            <input type="radio" id="Choice2"
+                                                   name="contact" value="grossier" required>
+                                            <label for="Choice2">Grossier</label>
+
+                                            <input type="radio" id="Choice3"
+                                                   name="contact" value="N'est plus pertinent" required>
+                                            <label for="Choice3">N'est plus pertinent</label>
+                                        <div class="form-group">
+                                            <div class="col-sm-20">
+                                                <button type="submit" class="default_btn">Envoyer</button>
+                                            </div>
+                                        </div>
+                                        </div>
+                                    </form>
+                                </header>
+                            </section>
+                        </div>
+                    </div>
+                </section>
+            </section>
+        </div>
+    </section>
+{% endblock %}

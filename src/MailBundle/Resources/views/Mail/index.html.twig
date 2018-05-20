@@ -1,0 +1,42 @@
+
+{% extends 'Base.html.twig' %}
+{% block mail %}
+    <section id="reservation" class="reservation_section bg-grey">
+    <div class="container padding">
+    <div class="col-sm-10 col-sm-offset-1 align-left">
+    <div class="reserv_form">
+    <div class="section_heading mb-40">
+<h2> <strong> Formulaire De Contact</strong> </h2>
+<hr>
+<h3><p> Contacter nous </p></h3>
+{{ form_start (form) }}
+<table>
+    <tr>
+        <td> Nom </td>
+        <td> {{ form_widget (form.nom) }} </td>
+    </tr>
+    <tr>
+        <td> Prenom </td>
+        <td> {{ form_widget (form.prenom) }} </td>
+    </tr>
+    <tr>
+        <td> Téléphone </td>
+        <td> {{ form_widget (form.tel) }} </td>
+    </tr>
+    <tr>
+        <td> Email </td>
+        <td> {{ form_widget (form.email) }} </td>
+    </tr>
+    <tr>
+        <td> Text </td>
+        <td> {{ form_widget (form.text) }} </td>
+    </tr>
+</table>
+{{ form_end (form) }}
+    </div>
+    </div>
+    </div>
+    </div>
+    </section>
+
+{% endblock %}

@@ -1,0 +1,67 @@
+{% extends 'baseAdmin.html.twig' %}
+
+{% block Ajouter_Etablissement %}
+    <section id="main-content">
+        <section class="wrapper">
+            <div class="row">
+                <div class="col-lg-12 col-sm-offset-0">
+                    <section class="panel" id="ABC">
+                        <header class="panel-heading col-sm-offset-0" id="ABCDE">
+                            <strong>Ajouter Un Evenement</strong>
+                        </header>
+                        <header class="panel-heading">
+                            {{ form_start(form) }}
+                            <table>
+                                {{ form_start(form) }}
+                                <tr class="">
+
+                                    <td>
+                                        {{ form_label(form.offre) }}
+                                    </td>
+                                    <td>
+                                        {{ form_widget(form.offre) }}
+                                    </td>
+                                </tr>
+                                <tr class="">
+                                    <td>
+                                        {{ form_label(form.dateDebut) }}
+                                    </td>
+                                    <td>
+                                        {{ form_widget(form.dateDebut) }}
+                                    </td>
+
+                                </tr>
+                                <tr class="">
+                                    <td>
+                                        {{ form_label(form.dateFin) }}
+                                    </td>
+                                    <td>
+                                        {{ form_widget(form.dateFin) }}
+                                    </td>
+
+                                </tr>
+                                <tr>
+                                    <td>
+                                        {{ form_label(form.description) }}
+                                    </td>
+                                    <td>
+                                        {{ form_widget(form.description) }}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        {{ form_end(form) }}
+                                    </td>
+
+                                </tr>
+                                <td>
+                                    <strong><input value="Ajouter Un Offre" class="btn btn-shadow btn-success" type="submit"></strong>
+                                </td>
+                            </table>
+                        </header>
+                    </section>
+                </div>
+            </div>
+        </section>
+    </section>
+{% endblock %}

@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block Rechercher_Reservation_Nom %}
+    <section class="food_menu bd-bottom padding">
+        <div class="container">
+            {{ form_start(form) }}
+            {{ form_end(form) }}
+            <div class="section_heading align-center mb-40 mt-40">
+                <h2>Liste des reservations</h2>
+            </div>
+            <div class="food_list">
+                {% for reservations in r %}
+                    <div class="col-sm-3 col-xs-6 xs-padding">
+                        <div class="food_content align-center">
+                            <p class="A">{{ reservations.nom }} {{ reservations.prenom }}</p> <br>
+                            <p class="A">La date de réservation est:{{ reservations.datedereservation|date('Y-m-d') }}</p> <br>
+                            <p class="A" >L'heure de réservation{{ reservations.heuredereservation|date }}</p><br>
+                            <p class="A">Le numéro de tel{{ reservations.numtel }}</p> <br>
+                            <p class="A">Le nombre de personnes{{ reservations.nbrePersonnes }}</p> <br>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+
+    </section><!-- /.food_menu -->
+{% endblock %}

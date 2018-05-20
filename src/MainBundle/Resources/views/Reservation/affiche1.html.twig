@@ -1,0 +1,41 @@
+{% extends "::base.html.twig" %}
+
+
+{% block AfficherReservation1 %}
+    <section id="main-content">
+        <section class="wrapper">
+            <div class="directory-info-row">
+                <div class="row">
+                    {% for reservations in r %}
+                        <div class="col-md-6 col-sm-6">
+                            <div class="panel padding">
+                                <div class="panel-body">
+                                    <div class="media">
+                                        <a class="pull-left" href="#">
+                                        </a>
+                                        <div class="media-body">
+                                            <h4>{{ reservations.nom }} {{ reservations.prenom }}</h4>
+                                            <ul class="social-links">
+                                            </ul>
+                                            <address>
+                                                <p class="A">La date d'arrivée est:{{ reservations.arrivee|date('Y-m-d') }}</p> <br>
+                                                <p class="A" >La date de départ est:{{ reservations.depart|date('Y-m-d') }}</p><br>
+                                                <p class="A">Le numéro de tel:{{ reservations.numtel }}</p> <br>
+                                                <p class="A">Nombre de chambres:{{ reservations.nbreChambres }}</p> <br>
+                                                <p class="A">Nombre d'adultes{{ reservations.nbreAdultes }}</p> <br>
+                                                <p class="A">Nombre d'enfants{{ reservations.nbreEnfants  }}</p> <br>
+                                                <a href="{{ path('update_reservation',{'id1':reservations.id,'id2':app.user.id})}}" class="btn btn-success"><i class="fa fa-eye"></i> Modifier votre reservation </a>
+                                                <a href="{{ path('delete_reservation',{'id':reservations.id,'id2':etab.id}) }}" class="btn btn-danger"><i class="fa fa-times"></i> Supprimer la reservation </a>
+                                            </address>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </section>
+    </section>
+{% endblock %}

@@ -1,0 +1,35 @@
+
+
+
+
+{% extends 'Base.html.twig' %}
+{% block ListEvent %}
+    <section id="reservation" class="reservation_section bg-grey">
+        <div class="container padding">
+            <div class="col-sm-10 col-sm-offset-1 align-left">
+                <div class="reserv_form">
+                    <div class="section_heading mb-40">
+                        <h2>Les Evenements Actuels </h2>
+                        <br><br>
+
+
+                        {% for events in e %}
+                            <div class="col-sm-3 col-xs-6 xs-padding">
+                                <div class="food_content align-center">
+
+                                    <h3><a style="color: #303133" href="{{ path('profile_event_user',{'id_event':events.id})}}">{{ (events.nom) }}</a>  </h3>
+                                    <i class="icon-clock"></i> {{ (events.date|date("m/d/Y") ) }}<br>
+                                    <i class="fa fa-home"></i> Chez: <a style="color: #303133" href="{{ path('Afficher_Etablissement_Client',{'id':events.etablissement.id})}}">{{ (events.etablissement.nom) }}</a>,  {{ events.etablissement.adresse }}<br>
+                                    <i class="fa fa-user"></i> Personnes Intéressées: {{events.interesses }}<br>
+                                    <i class="fa fa-users"></i> Personnes Qui Vont Participer: {{events.nbr_personnes  }}<br>
+                                </div>
+                            </div>
+                        {% endfor %}
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

@@ -1,0 +1,65 @@
+{% set path_interet = exist_interet != true ? path('delete_interest' , {'id' : e.id}) : path('ajouter_interest' , {'id' : e.id}) %}
+{% set state_interet = exist_interet != true ? 'Intéressé(e)' : 'Marquer intéressé(e)' %}
+
+{% set path_going = exist_going != true ? path('delete_going' , {'id' : e.id}) : path('ajouter_going' , {'id' : e.id}) %}
+{% set state_going = exist_going != true ? 'Partant' : 'Marquer partant' %}
+{% extends 'Base.html.twig' %}
+
+{% block ProfileEvent %}
+
+    <link href="{{ asset('bundles/main/BackEnd/assets/font-awesome/css/font-awesome.css') }}" rel="stylesheet"
+          xmlns="http://www.w3.org/1999/html"/>
+
+
+    <section class="page_header"  style="background-image: url({{ asset('bundles/main/img/events.jpeg') }})">
+
+        <div class="container">
+            <div class="display-table">
+                <div class="table-cell">
+                    <div class="page_content align-center">
+                        <h2 class="text-white">{{ e.nom }}</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section><!-- /.page_header -->
+
+
+
+    <section class="blog_single padding">
+        <div class="container">
+            <br class="blog_content">
+            <h2 style="margin-top: -80px">{{ (e.nom) }}  </h2>
+
+            <br class="single-meta-info mb-25">
+            <i class="icon-clock"></i> <strong>{{ (e.date|date("m/d/Y") ) }}</strong><br>
+            <i class="fa fa-home"></i> <strong>Chez: <a style="color: #303133" href="{{ path('Afficher_Etablissement_Client',{'id':e.etablissement.id})}}">{{ (e.etablissement.nom) }}</a>,  {{ e.etablissement.adresse }}</strong><br>
+            <i ></i> <strong>Personnes intéressées: </strong>{{ (e.interesses ) }}<br>
+            <i ></i> <strong>Personnes qui vont participer: </strong>{{ (e.nbr_personnes) }}<br>
+            <i ></i> <strong>Description: </strong>{{ (e.description) }}<br>
+
+
+
+                {% if is_granted('ROLE_USER') %}
+                {% if etab.representant==user %}
+                    <div>
+                        <a class="default_btn" style="margin-top: 10px"  href="{{ path('update_event',{'id':e.id})}}">Modifier </a>
+                        <a class="default_btn" style="margin-top: 10px" href="{{ path('delete_event',{'id':e.id})}}">Supprimer </a>
+                    </div>
+
+
+                {% else %}
+                    <div>
+
+                        <a href="{{ path_going }}" class="default_btn" style="margin-top: 10px"  id="js-going">{{ state_going }}</a>
+                        <a href="{{ path_interet }}" class="default_btn"  style="margin-top: 10px"  id="js-interested">{{ state_interet }}</a>
+                    </div>
+                {% endif %}
+                {% endif %}
+
+                        <br><br><br>
+                        {{ socialButtons() }}
+
+        </div>
+    </section>
+{% endblock %}

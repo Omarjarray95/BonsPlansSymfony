@@ -1,0 +1,37 @@
+{% extends "::base.html.twig" %}
+
+{% block AfficherExperience %}
+<h1>Welcome to the SharedExperience:Affiche page</h1>
+
+<section id="main-content">
+    <section class="wrapper">
+        <div class="directory-info-row">
+            <div class="row">
+                {% for experiences in e %}
+                    <div class="col-md-6 col-sm-6">
+                        <div class="panel padding">
+                            <div class="panel-body">
+                                <div class="media">
+                                    <a class="pull-left" href="#">
+                                    </a>
+                                    <div class="media-body">
+                                        <h4>{{ experiences.user.nom }}</h4>
+                                        <ul class="social-links">
+                                        </ul>
+                                        <address>
+                                            <p class="A">Votre date de visite:{{ experiences.checkInDate|date('Y-m-d') }}</p> <br>
+                                            <p class="A" >Votre impression:{{ experiences.impression }}</p><br>
+                                            <a href="{{ path('update_experience',{'id1':experiences.id,'id2':app.user.id})}}" class="btn btn-success"><i class="fa fa-eye"></i>Modifier votre Expérience </a>
+                                            <a href="{{ path('delete_experience',{'id1':experiences.id,'id2':app.user.id}) }}" class="btn btn-danger"><i class="fa fa-times"></i> Supprimer votre Expérience </a>
+                                        </address>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+{% endblock %}

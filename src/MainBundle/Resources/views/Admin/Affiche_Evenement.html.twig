@@ -1,0 +1,52 @@
+{% extends 'baseAdmin.html.twig' %}
+
+{% block Afficher_evenements_Tout %}
+    <li><a href="{{ path('all_events_Admin') }}">Afficher Tout</a></li>
+{% endblock %}
+
+{% block Trier %}
+    <li class="dropdown">
+        <a data-toggle="dropdown" data-hover="dropdown" class="dropdown-toggle" href="#"> Trier Par <b class=" fa fa-angle-down"></b></a>
+        <ul class="dropdown-menu">
+            <li><a href="{{ path('Trier_Etablissement',{'critere':'HOA'}) }}"><i class="fa fa-sort-desc"></i> Horaire D'Ouverture</a></li>
+            <li><a href="{{ path('Trier_Etablissement',{'critere':'HFD'}) }}"><i class="fa fa-sort-asc"></i> Horaire De Fermeture</a></li>
+            <li><a href="{{ path('Trier_Etablissement',{'critere':'BMA'}) }}"><i class="fa fa-sort-desc"></i> Budget Moyen</a></li>
+            <li><a href="{{ path('Trier_Etablissement',{'critere':'BMD'}) }}"><i class="fa fa-sort-desc"></i> Budget Moyen</a></li>
+        </ul>
+    </li>
+{% endblock %}
+
+{% block Afficher_Evenement %}
+    <section id="main-content">
+        <section class="wrapper">
+            <div class="directory-info-row">
+                <div class="row">
+                    {% for ev in even %}
+                        <div class="col-md-6 col-sm-6">
+                            <div class="panel">
+                                <div class="panel-body">
+                                    <div class="media">
+
+                                        <div class="media-body">
+                                            <h4>{{ ev.nom }}</h4>
+
+
+                                                <strong><p class="A">{{ev.etablissement.nom  }} , adresse: {{ev.etablissement.adresse  }}</p></strong><br>
+                                                <p class="A"> <strong>Date : </strong>{{ev.date|date("m/d/Y")  }}</p><br>
+                                                <p class="A"> <strong>Personnes qui vont visiter : </strong>{{ev.nbr_personnes  }}</p><br>
+                                                <p class="A"> <strong>Personnes intéressés : </strong>{{ev.interesses  }}</p><br>
+                                                <a href="{{ path('profile_event_admin',{'id_event':ev.id}) }}" class="btn btn-success"><i class="fa fa-eye"></i> Afficher Détails </a>
+                                                <a href="{{ path('delete_event_admin',{'id':ev.id}) }}" class="btn btn-danger"><i class="fa fa-times"></i> Supprimer </a>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </section>
+    </section>
+
+{% endblock %}

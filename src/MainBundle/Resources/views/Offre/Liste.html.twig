@@ -1,0 +1,33 @@
+
+{% extends 'Base.html.twig' %}
+{% block ListOffre %}
+    <section id="reservation" class="reservation_section bg-grey">
+        <div class="container padding">
+            <div class="col-sm-10 col-sm-offset-1 align-left">
+                <div class="reserv_form">
+                    <div class="section_heading mb-40">
+                        <h2>Les Offres Actuelles</h2><br>
+
+                        {% for offres in offre %}
+                            <div class="col-sm-3 col-xs-6 xs-padding">
+                                <div class="food_content align-center">
+                                    <h3><a style="color: #303133" href="{{ path('profile_offre_user',{'id':offres.id})}}">{{ (offres.offre) }}</a>  </h3>
+                                    <i class="icon-clock"></i><strong> Date début-fin</strong><br>{{ (offres.dateDebut|date("m/d/Y") ) }}  -  {{ (offres.dateFin|date("m/d/Y") ) }}
+
+                                    <i ></i> <strong> Description offre: </strong>{{ (offres.description) }}<br>
+                                    <i class="fa fa-home"></i> <strong>Chez: <a style="color: #303133" href="{{ path('Afficher_Etablissement_Client',{'id':offres.etablissement.id})}}">{{ (offres.etablissement.nom) }}</a></strong><br>
+                                    {% if offres.etablissement.partenaire==1  %}
+                                        <i class=""></i><strong> Code promotion: </strong>{{ offres.code_promo }}<br>
+                                        <i class=""></i><strong> Pourcentage OFF: </strong>{{ offres.pourcentage }}<br>
+                                    {% endif %}
+
+                                </div>
+                            </div>
+                        {% endfor %}
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

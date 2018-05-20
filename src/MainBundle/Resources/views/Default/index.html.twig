@@ -1,0 +1,13 @@
+{% extends "MainBundle::LayoutFront.html.twig" %}
+
+{% block Ajouter_Etablissement %}
+    {% if is_granted('ROLE_USER') %}
+    <li><a style="color: #ffffff;font-size: 11px" href="{{ path('main_bundle_ajout_demande') }}">Ajouter Un Etablissement</a></li>
+    {% endif %}
+{% endblock %}
+
+
+
+
+
+

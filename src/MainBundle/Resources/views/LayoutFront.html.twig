@@ -1,0 +1,289 @@
+{% extends 'Base.html.twig' %}
+
+{% block layoutfront %}
+<section class="slider_section">
+    <ul id="main-slider" class="owl-carousel main_slider">
+        <li class="main_slide" style="background-image: url({{ asset('bundles/main/img/map.jpeg') }});">
+            <div class="container">
+                <div class="display-table">
+                    <div class="table-cell">
+                        <div class="slider_content align-center">
+                            <h1 class="text-white">Trouvez Un Bon Plan</h1>
+                            <p class="text-white">Trouvez Les Emplacements Autour De Vous que Vous Pouvez Visiter</p>
+                            <div class="btn_group">
+                                <a href="{{ path('Google_Maps',{'type':'cafe'}) }}" class="default_btn">Ouvrir Google Maps</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </li>
+        <li class="main_slide" style="background-image: url({{ asset('bundles/main/img/mobil.jpeg') }});">
+            <div class="container">
+                <div class="display-table">
+                    <div class="table-cell">
+                        <div class="slider_content align-center">
+                            <h1 class="text-white">Obtenez Notre Application sur votre téléphone</h1>
+                            <p class="text-white">Naviguez partout avec Bons Plans sur vos téléphones</p>
+                            <div class="btn_group">
+                                <a href="#" class="default_btn">Store</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </li>
+        <li class="main_slide" style="background-image: url({{ asset('bundles/main/img/Desktop.jpeg') }});">
+            <div class="container">
+                <div class="display-table">
+                    <div class="table-cell">
+                        <div class="slider_content align-center">
+                            <h1 class="text-white">Obtenez Notre Application Desktop</h1>
+                            <p class="text-white">Télécharger votre guide Bons Plans Tunisie sur vos PC</p>
+                            <div class="btn_group">
+                                <a href="#" class="default_btn">Lien de téléchargement</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </li>
+        <li class="main_slide" style="background-image: url({{ asset('bundles/main/img/party2.jpeg') }})">
+            <div class="container">
+                <div class="display-table">
+                    <div class="table-cell">
+                        <div class="slider_content align-center">
+                            <h1 class="text-white">A la recherche d'une nouvelle expérience ?</h1>
+                            <p class="text-white">Trouvez les meilleurs endroits pour manger, fêter, balader ....</p>
+                            <div class="btn_group">
+                                <a href="{{ path('all_events_user') }}" class="default_btn">Liste des évènements</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </li>
+        <li class="main_slide" style="background-image: url({{ asset('bundles/main/img/man2.jpeg') }});">
+            <div class="container">
+                <div class="display-table">
+                    <div class="table-cell">
+                        <div class="slider_content align-center">
+                            <h1 class="text-white">Restez informés!</h1>
+                            <p class="text-white">Actus, bons plans, sorties : Le meilleur de la Tunisie dans votre boîte mail</p>
+                            <div class="btn_group">
+                                <a href="{{ path('contact') }}" class="default_btn">S'inscrire</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </li>
+    </ul>
+</section><!-- /.slider_section -->
+
+<section id="about" class="about_section bg-grey bd-bottom padding">
+    <div class="container">
+        <div class="col-sm-6">
+            <div class="about_content">
+                <h2>Faites vous aider dans votre choix</h2>
+                <p>Vous hésitez? Faites confiance aux notes et commentaires des internautes!</p>
+
+                <img src="{{ asset('bundles/main/img/digi.png') }}" alt="">
+            </div>
+        </div>
+        <div class="col-sm-6 hidden-xs">
+            <div class="about_img">
+                <img src="{{ asset('bundles/main/img/about-bg-1.jpg') }}" alt="idea-images" class="about_img_1">
+                <img src="{{ asset('bundles/main/img/about-bg-2.jpg') }}" alt="idea-images" class="about_img_2">
+            </div>
+        </div>
+    </div>
+</section> <!--/.about_section -->
+
+
+
+<section id="menu" class="menu_section bd-bottom padding">
+    <div class="container">
+        <div class="section_heading align-center">
+        </div><!-- /.section_heading -->
+        <div class="menu_items">
+            <ul class="tab_menu mb-30">
+                <li><a href="#Restaurants" data-toggle="tab">Restaurants</a></li>
+                <li><a href="#Boutiques" data-toggle="tab">Shops</a></li>
+                <li><a href="#Hotels" data-toggle="tab">Hotels</a></li>
+                <li><a href="#Autres" data-toggle="tab">Autres</a></li>
+            </ul>
+
+            <div class="tab-content">
+                <div class="tab-pane fade tab_content in active">
+                    {% for etablissements in eta | slice(0,4) %}
+                    <div class="col-sm-3 col-xs-6 xs-padding">
+                        <div class="food_content align-center">
+                            <a href="{{ path('Afficher_Etablissement_Client',{'id':etablissements.id}) }}"><img src="{{ asset('img/' ~ etablissements.imagePrincipale) }}" alt="food" style="height: 200px;width: 230px;"></a>
+                            <h3><a style="color: #303133" href="{{ path('Afficher_Etablissement_Client',{'id':etablissements.id}) }}">{{ etablissements.nom }}</a></h3>
+                            <h4 class="price">{{ etablissements.budgetmoyen }} DT</h4>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+
+                <div class="tab-pane fade tab_content" id="Restaurants">
+                    {% for etablissements in eta1 | slice(0,3) | sort %}
+                    <div class="col-sm-3 col-xs-6 xs-padding">
+                        <div class="food_content align-center">
+                            <a href="{{ path('Afficher_Etablissement_Client',{'id':etablissements.id}) }}"><img src="{{ asset('img/' ~ etablissements.imagePrincipale) }}" style="height: 200px;width: 230px;"></a>
+                            <h3>{{ etablissements.nom }}</h3>
+                            <h4 class="price">{{ etablissements.budgetmoyen }} DT</h4>
+                        </div>
+                    </div>
+                    {% endfor %}
+                    <div class="col-sm-3 col-xs-6 xs-padding">
+                        <div class="food_content align-center padding">
+                            <h3><a style="color: #303133;" href="{{ path('Rechercher_Etablissement_Client',{'critere':'Resto_Café'}) }}">Afficher Tout</a></h3>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tab-pane fade tab_content" id="Boutiques">
+                    {% for etablissements in eta2 | slice(0,3) %}
+                            <div class="col-sm-3 col-xs-6 xs-padding">
+                                <div class="food_content align-center">
+                                    <a href="{{ path('Afficher_Etablissement_Client',{'id':etablissements.id}) }}"><img src="{{ asset('img/' ~ etablissements.imagePrincipale) }}" style="height: 200px;width: 230px;"></a>
+                                    <h3>{{ etablissements.nom }}</h3>
+                                    <h4 class="price">{{ etablissements.budgetmoyen }} DT</h4>
+                                </div>
+                            </div>
+                    {% endfor %}
+                    <div class="col-sm-3 col-xs-6 xs-padding">
+                        <div class="food_content align-center padding">
+                            <h3><a style="color: #303133;" href="{{ path('Rechercher_Etablissement_Client',{'critere':'Shops'}) }}">Afficher Tout</a></h3>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tab-pane fade tab_content" id="Hotels">
+                    {% for etablissements in eta3 | slice(0,3) %}
+                            <div class="col-sm-3 col-xs-6 xs-padding">
+                                <div class="food_content align-center">
+                                    <a href="{{ path('Afficher_Etablissement_Client',{'id':etablissements.id}) }}"><img src="{{ asset('img/' ~ etablissements.imagePrincipale) }}" style="height: 200px;width: 230px;"></a>
+                                    <h3>{{ etablissements.nom }}</h3>
+                                    <h4 class="price">{{ etablissements.budgetmoyen }} DT</h4>
+                                </div>
+                            </div>
+                    {% endfor %}
+                    <div class="col-sm-3 col-xs-6 xs-padding">
+                        <div class="food_content align-center padding">
+                            <h3><a style="color: #303133;" href="{{ path('Rechercher_Etablissement_Client',{'critere':'hotels'}) }}">Afficher Tout</a></h3>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tab-pane fade tab_content" id="Autres">
+                    {% for etablissements in eta4 | slice(0,3) %}
+                            <div class="col-sm-3 col-xs-6 xs-padding">
+                                <div class="food_content align-center">
+                                    <a href="{{ path('Afficher_Etablissement_Client',{'id':etablissements.id}) }}"><img src="{{ asset('img/' ~ etablissements.imagePrincipale) }}" style="height: 200px;width: 230px;"></a>
+                                    <h3>{{ etablissements.nom }}</h3>
+                                    <h4 class="price">{{ etablissements.budgetmoyen }} DT</h4>
+                                </div>
+                            </div>
+                    {% endfor %}
+                    <div class="col-sm-3 col-xs-6 xs-padding">
+                        <div class="food_content align-center padding">
+                            <h3><a style="color: #303133;" href="{{ path('Rechercher_Etablissement_Client',{'critere':'Autres'}) }}">Afficher Tout</a></h3>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section><!-- /.menu_section -->
+
+<section id="gallery" class="gallery_section bg-grey padding">
+    <div class="container">
+        <div class="section_heading align-center mb-40">
+            <h2>Bons Plans Tunisie</h2>
+            <p>C’est gratuit (et ça le restera toujours). </p>
+        </div><!-- /.section_heading -->
+    </div>
+    <div class="container-fluid no-padding">
+        <ul class="gallery_items">
+            <li class="col-sm-4 col-xs-6 single_item branding">
+                <figure class="gallery_item">
+                    <img src="{{ asset('bundles/main/img/gallery-1.jpg') }}" alt="gallery Item">
+                    <figcaption class="overlay">
+                        <a href="{{ asset('bundles/main/img/gallery-1.jpg') }}" class="img_popup">
+                            <div class="table-cell">
+                                <h3>Delicious Foods</h3>
+                            </div>
+                        </a>
+                    </figcaption>
+                </figure>
+            </li>
+            <li class="col-sm-4 col-xs-6 single_item photo">
+                <figure class="gallery_item">
+                    <img src="{{ asset('bundles/main/img/gallery-2.jpg') }}" alt="gallery Item">
+                    <figcaption class="overlay">
+                        <a href="{{ asset('bundles/main/img/gallery-2.jpg') }}" class="img_popup">
+                            <div class="table-cell">
+                                <h3>Delicious Foods</h3>
+                            </div>
+                        </a>
+                    </figcaption>
+                </figure>
+            </li>
+            <li class="col-sm-4 col-xs-6 single_item print branding">
+                <figure class="gallery_item">
+                    <img src="{{ asset('bundles/main/img/gallery-3.jpg') }}" alt="gallery Item">
+                    <figcaption class="overlay">
+                        <a href="{{ asset('bundles/main/img/gallery-3.jpg') }}" class="img_popup">
+                            <div class="table-cell">
+                                <h3>Delicious Foods</h3>
+                            </div>
+                        </a>
+                    </figcaption>
+                </figure>
+            </li>
+            <li class="col-sm-4 col-xs-6 single_item website photo">
+                <figure class="gallery_item">
+                    <img src="{{ asset('bundles/main/img/gallery-4.jpg') }}" alt="gallery Item">
+                    <figcaption class="overlay">
+                        <a href="{{ asset('bundles/main/img/gallery-4.jpg') }}" class="img_popup">
+                            <div class="table-cell">
+                                <h3>Delicious Foods</h3>
+                            </div>
+                        </a>
+                    </figcaption>
+                </figure>
+            </li>
+            <li class="col-sm-4 col-xs-6 single_item print photo">
+                <figure class="gallery_item">
+                    <img src="{{ asset('bundles/main/img/gallery-5.jpg') }}" alt="gallery Item">
+                    <figcaption class="overlay">
+                        <a href="{{ asset('bundles/main/img/gallery-5.jpg') }}" class="img_popup">
+                            <div class="table-cell">
+                                <h3>Delicious Foods</h3>
+                            </div>
+                        </a>
+                    </figcaption>
+                </figure>
+            </li>
+            <li class="col-sm-4 col-xs-6 single_item branding website">
+                <figure class="gallery_item">
+                    <img src="{{ asset('bundles/main/img/gallery-6.jpg') }}" alt="gallery Item">
+                    <figcaption class="overlay">
+                        <a href="{{ asset('bundles/main/img/gallery-6.jpg') }}" class="img_popup">
+                            <div class="table-cell">
+                                <h3>Delicious Foods</h3>
+                            </div>
+                        </a>
+                    </figcaption>
+                </figure>
+            </li>
+        </ul><!-- /.gallery_items -->
+    </div>
+</section><!-- /.gallery_section -->
+{% endblock %}
+
+

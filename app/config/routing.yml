@@ -1,0 +1,30 @@
+mobile:
+    resource: "@MobileBundle/Resources/config/routing.yml"
+    prefix:   /mobile
+
+main:
+    resource: "@MainBundle/Resources/config/routing.yml"
+    prefix:   /BonsPlans
+
+app:
+    resource: '@AppBundle/Controller/'
+    type: annotation
+
+fos_user:
+    resource: "@FOSUserBundle/Resources/config/routing/all.xml"
+
+mgilet_notifications:
+    resource: "@MgiletNotificationBundle/Controller/"
+    prefix: /notifications
+
+graphe:
+    resource: "@GrapheBundle/Resources/config/routing.yml"
+    prefix:   /Graphe
+
+my_app_mail:
+    resource: "@MailBundle/Resources/config/routing.yml"
+    prefix:   /mail
+
+discutea_forum:
+    resource: "@DForumBundle/Resources/config/routing.yml"
+    prefix:   /BonsPlans

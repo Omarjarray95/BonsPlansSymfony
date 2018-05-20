@@ -1,0 +1,20 @@
+{% extends 'Base.html.twig' %}
+
+{% block login %}
+            {% if is_granted("ROLE_USER") %}
+
+            <div>
+                {% block fos_user_content1 %}
+                {% endblock %}
+            </div>
+
+            {% else %}
+                <div>
+                    {% block fos_user_content %}
+                    {% endblock fos_user_content %}
+                </div>
+
+            {% endif %}
+{% endblock %}
+
+

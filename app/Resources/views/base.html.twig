@@ -1,0 +1,357 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9" lang=""> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+
+<!-- Mirrored from wowthemez.com/templates/hangout/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 06 Feb 2018 22:44:44 GMT -->
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="AlexaTheme">
+
+    <title>Tunisie Bons Plans</title>
+
+    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('bundles/main/img/digi.png')}}">
+
+    <!-- Elegant Font Icons CSS -->
+    <link rel="stylesheet" href="{{ asset('bundles/main/css/elegant-font-icons.css')}}">
+    <!-- Elegant Line Icons CSS -->
+    <link rel="stylesheet" href="{{ asset('bundles/main/css/elegant-line-icons.css')}}">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{{ asset('bundles/main/css/bootstrap.min.css')}}">
+    <!-- animate CSS -->
+    <link rel="stylesheet" href="{{ asset('bundles/main/css/animate.min.css')}}">
+    <!-- Venobox CSS -->
+    <link rel="stylesheet" href="{{ asset('bundles/main/css/venobox/venobox.css')}}">
+    <!-- OWL-Carousel CSS -->
+    <link rel="stylesheet" href="{{ asset('bundles/main/css/owl.carousel.css')}}">
+    <!-- Slick Nav CSS -->
+    <link rel="stylesheet" href="{{ asset('bundles/main/css/slicknav.min.css')}}">
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="{{ asset('bundles/main/css/main.css')}}">
+    <!-- Responsive CSS -->
+    <link rel="stylesheet" href="{{ asset('bundles/main/css/responsive.css')}}">
+
+    <link href="{{ asset('bundles/main/BackEnd/assets/font-awesome/css/font-awesome.css')}}" rel="stylesheet" />
+
+    <script src="{{ asset('bundles/main/js/vendor/modernizr-2.8.3-respond-1.4.2.min.js') }}"></script>
+
+    <script src="{{ asset('bundles/main/js/jquery-3.2.1.min.js') }}"></script>
+
+    <script src="{{ asset('bundles/main/js/M.js') }}"></script>
+
+    <link rel="stylesheet" type="text/css" href="{{ asset('bundles/main/css/rating.css') }}" />
+
+
+    <style>
+        #ABCDE
+        {
+            text-align: center;
+        }
+    </style>
+    <style>
+        #ABCDEF
+        {
+            margin-top: 60px;
+        }
+    </style>
+    <style>
+        .B
+        {
+            margin-bottom: 10px;
+        }
+    </style>
+    <style>
+        .BA
+        {
+            margin-bottom: 30px;
+        }
+    </style>
+</head>
+
+<body>
+<!--[if lt IE 8]>
+<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+<![endif]-->
+
+<div id='preloader' >
+    <div class='loader' >
+        <img src="{{ asset('bundles/main/img/.gif') }}" width="80" alt="">
+    </div>
+</div><!-- Preloader -->
+
+<header id="header" class="header_section">
+    <nav class="navbar navbar-inverse">
+        <div class="container">
+            <div class="navbar-header">
+                <img src="{{ asset('bundles/main/img/digi.png') }}" alt="Logo">
+            </div>
+            <div id="navbar" class="navbar-right">
+                <ul id="mainmenu" class="nav navbar-nav">
+                    <li><a style="color: #ffffff;font-size: 11px" href="{{ path('main_homepage')}}">Acceuil</a>
+                    </li>
+                    <li><a style="color: #ffffff;font-size: 11px" href="{{ path('main_homepage')}}">Actualités</a>
+                        <ul>
+                            <li><a style="color: #ffffff;font-size: 11px" href="{{ path('all_events_user')}}">Evenements</a></li>
+                            <li><a style="color: #ffffff;font-size: 11px" href="{{ path('all_offres_user')}}">Offres</a></li>
+                        </ul>
+                    </li>
+                    <li><a style="color: #ffffff;font-size: 11px" href="{{ path('contact') }}">Contact</a></li>
+                    {% block user1 %}
+                    {% if is_granted('ROLE_USER') %}
+                        <li><a style="color: #ffffff;font-size: 11px" href="{{ path('fos_user_profile_show') }}">{{ app.user.username }}</a></li>
+                        <li><a style="color: #ffffff;font-size: 11px" href="{{ path('fos_user_security_logout') }}">Se Déconnecter</a></li>
+                    {% else %}
+                    <li><a style="color: #ffffff;font-size: 11px" href="{{ path('fos_user_security_login') }}">Se Connecter</a></li>
+                    <li><a style="color: #ffffff;font-size: 11px" href="{{ path('fos_user_registration_register') }}">S'Inscrire</a></li>
+                    {% endif %}
+                    {% endblock %}
+                    {% block Ajouter_Etablissement %}
+                    {% endblock %}
+                </ul>
+                <ul id="mainmenu" class="nav navbar-nav">
+                    {% if is_granted('ROLE_USER') %}
+                        <li id="header_notification_bar" class="dropdown">
+                            <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                                <i class="fa fa-bell-o"></i>
+                                <span class="badge bg-warning">{{ mgilet_notification_count(app.user) }}</span>
+                            </a>
+                            <ul style="width: 300px" class="dropdown-menu extended notification">
+                                <li>
+                                    <p style="color: #ffffff;font-weight: bold;margin-left: 10px;margin-top: 10px">Vous Avez {{ mgilet_notification_count(app.user) }} Notifications</p>
+                                </li>
+                                <li>
+                                    {{ mgilet_notification_render(app.user,{'seen':true,'template':'MainBundle::notification_list.html.twig'}) }}
+                                </li>
+                            </ul>
+                        </li>
+                    {% endif %}
+
+                </ul>
+            </div>
+
+
+            </div><!--/.navbar-collapse -->
+
+        </div>
+    </nav><!-- Navigation Bar -->
+</header> <!-- Header_Section -->
+
+{% block layoutfront %}
+{% endblock %}
+
+{% block contact %}
+{% endblock %}
+
+{% block apropos %}
+{% endblock %}
+
+{% block Modifier_Etablissement %}
+{% endblock %}
+
+{% block login %}
+{% endblock %}
+
+{% block AjouterEtablissement %}
+{% endblock %}
+
+{% block AfficherEtablissement %}
+{% endblock %}
+
+{% block Photo %}
+{% endblock %}
+
+{% block Rechercher_Etablissement_Client %}
+{% endblock %}
+
+{% block Tag %}
+{% endblock %}
+
+{% block GM %}
+{% endblock %}
+
+{% block wishesUser %}
+{% endblock %}
+{% block Afficher_Evenement_ParId_etab %}
+{% endblock %}
+
+{% block UpdateEvent %}
+{% endblock %}
+
+{% block AfficherEtablissementUser %}
+{% endblock %}
+
+{% block EventRep %}
+{% endblock %}
+
+{% block EtabEvent %}
+{% endblock %}
+
+
+
+{% block Profileoffre %}
+{% endblock %}
+
+{% block OfferRep %}
+{% endblock %}
+
+{% block ProfileEvent %}
+{% endblock %}
+
+{% block AjouterEvent %}
+{% endblock %}
+
+{% block UpdateOffre %}
+{% endblock %}
+
+{% block ListOffre %}
+{% endblock %}
+
+{% block ListEvent %}
+{% endblock %}
+
+{% block AjouterOffre %}
+{% endblock %}
+
+{% block ShowFav %}
+{% endblock %}
+
+{% block JQuery %}
+{% endblock %}
+
+{% block mailsucces %}
+{% endblock %}
+
+{% block mail %}
+{% endblock %}
+
+{% block ShowVisited %}
+{% endblock %}
+
+{% block content %}
+{% endblock %}
+
+{% block AjouterCommentaire %}
+{% endblock %}
+
+{% block Topic %}
+{% endblock %}
+
+{% block AfficherExperience %}
+{% endblock %}
+
+{% block AjouterExperience %}
+{% endblock %}
+
+{% block Rechercher_Reservation_Nom %}
+{% endblock %}
+
+{% block AjouterReservation1 %}
+{% endblock %}
+
+{% block AfficherReservation %}
+{% endblock %}
+
+{% block AfficherReservation1 %}
+{% endblock %}
+
+{% block AjouterReservation %}
+{% endblock %}
+
+{% block UpdateReservation %}
+{% endblock %}
+
+<section id="subscribe" class="widget_section padding">
+    <div class="container">
+        <div class="col-md-4 col-xs-6 xs-padding">
+            <div class="footer_widget">
+                <h3 class="text-white">Contacts</h3>
+                <p>ADRESSE: Z.I. Chotrana II B.P. 160
+                    Pôle Technologique El Ghazela - Ariana 2083
+                    <br>Email: bonsplans.esprit@gmail.tn</p>
+                <ul class="widget_social">
+                    <li><a href="#"><i class="social_facebook"></i></a></li>
+                    <li><a href="#"><i class="social_twitter"></i></a></li>
+                    <li><a href="#"><i class="social_googleplus"></i></a></li>
+                    <li><a href="#"><i class="social_instagram"></i></a></li>
+                    <li><a href="#"><i class="social_linkedin"></i></a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-md-4 col-xs-6 xs-padding">
+            <div class="footer_widget">
+                <h3 class="text-white">Tunisie Bons Plans</h3>
+                <ul class="widget_social">
+                    <li><a href="#">A propos</a></li><br>
+                    <li><a href="#">Publicité/ Annonceurs</a></li><br>
+                    <li><a href="#">Etablissements/ Propriétaire</a></li><br>
+                    <li><a href="#">Mentions légales</a></li>
+
+                </ul>
+
+            </div>
+        </div>
+        <div class="col-md-4 col-xs-12 xs-padding">
+            <div class="footer_widget">
+                <h4 class="text-white">Newsletter</h4>
+                <div class="subscribe_form">
+                    <p class="align-left">Vous recevrez régulièrement toutes nos actualités sur votre boîte de réception</p>
+
+                </div><!-- Subscribe Form -->
+            </div>
+        </div>
+    </div>
+</section><!-- /.widget_section -->
+
+<footer class="footer_section">
+    <div class="container">
+        <div class="col-xs-6 xs-padding">
+            <div class="copyright">&copy; 2018 Bons Plans powered by DigiMinds  </div>
+        </div>
+        <div class="col-xs-6 xs-padding">
+            <ul class="footer_social">
+
+                <li><a href="#">Passer une réclamation</a></li>
+
+            </ul>
+        </div>
+    </div>
+</footer><!-- /.footer_section -->
+
+<a data-scroll href="#header" id="scroll-to-top"><i class="arrow_up"></i></a>
+
+<!-- jQuery Lib -->
+<script src="{{ asset('bundles/main/js/vendor/jquery-1.12.4.min.js') }}"></script>
+<!-- Bootstrap JS -->
+<script src="{{ asset('bundles/main/js/vendor/bootstrap.min.js') }}"></script>
+<!-- Imagesloaded JS -->
+<script src="{{ asset('bundles/main/js/vendor/imagesloaded.pkgd.min.js') }}"></script>
+<!-- OWL-Carousel JS -->
+<script src="{{ asset('bundles/main/js/vendor/owl.carousel.min.js') }}"></script>
+<!-- isotope JS -->
+<script src="{{ asset('bundles/main/js/vendor/jquery.isotope.v3.0.2.js') }}"></script>
+<!-- Smooth Scroll JS -->
+<script src="{{ asset('bundles/main/js/vendor/smooth-scroll.min.js') }}"></script>
+<!-- venobox JS -->
+<script src="{{ asset('bundles/main/js/vendor/venobox.min.js') }}"></script>
+<!-- ajaxchimp JS -->
+<script src="{{ asset('bundles/main/js/vendor/jquery.ajaxchimp.min.js') }}"></script>
+<!-- Slick Nav JS -->
+<script src="{{ asset('bundles/main/js/vendor/jquery.slicknav.min.js') }}"></script>
+<!-- Contact JS -->
+<script src="{{ asset('bundles/main/js/contact.js') }}"></script>
+<!-- Main JS -->
+<script src="{{ asset('bundles/main/js/main.js') }}"></script>
+
+<script src="{{ asset('bootbox.min.js') }}"></script>
+<script src="{{ asset('ajax.js') }}"></script>
+<script src="{{ asset('bundles/main/js/vendor/rating.js') }}"></script>
+
+</body>
+
+<!-- Mirrored from wowthemez.com/templates/hangout/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 06 Feb 2018 22:50:36 GMT -->
+</html>

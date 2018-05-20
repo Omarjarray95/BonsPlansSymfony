@@ -1,0 +1,25 @@
+{% extends 'Base.html.twig' %}
+
+{% block AfficherEtablissement %}
+    <section id="reservation" class="reservation_section bg-grey">
+    <div style="margin-top: 50px" class="container padding">
+        <section id="main-content">
+            <section class="wrapper">
+    {{ form_start(form) }}
+                <table>
+                    <tr>
+                        <td>
+                            <strong>Noter Cet Etablissement: </strong>
+                        </td>
+                        <td>
+                            {{ form_widget(form.rating) }}
+                        </td>
+                    </tr>
+                </table>
+    <input class="default_btn" type="submit" name="Submit">
+    {{ form_end(form) }}
+            </section>
+        </section>
+    </div>
+    </section>
+{% endblock %}

@@ -1,0 +1,140 @@
+{% extends 'Base.html.twig' %}
+
+{% block AjouterEtablissement %}
+
+    <section class="page_header">
+        <div class="container">
+            <div class="display-table">
+                <div class="table-cell">
+                    <div class="page_content align-center">
+                        <h2 class="text-white">Voulez Vous Ajouter Un Etablissement ?</h2>
+                        <p>Contactez-Nous Et Devenez L'Administrateur De La Page De Votre Etablissement</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section><!-- /.page_header -->
+
+    <section id="reservation" class="reservation_section bg-grey">
+        <div class="container padding">
+            <section id="main-content">
+                <section class="wrapper">
+                    <div class="row">
+                        <div class="col-lg-12 col-sm-offset-0">
+                            <section class="panel" id="ABC">
+                                <header class="panel-heading col-sm-offset-0" id="ABCDE">
+                                    <strong>Ajouter Un Etablissement</strong>
+                                </header>
+                                <header class="panel-heading">
+                                    {{ form_start(demande) }}
+                                    <table>
+                                        <tr class="">
+                                            <td>
+                                                {{ form_label(demande.nom) }}
+                                            </td>
+                                            <td>
+                                                {{ form_widget(demande.nom) }}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                {{ form_label(demande.type) }}
+                                            </td>
+                                            <td>
+                                                {{ form_widget(demande.type) }}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                {{ form_label(demande.typeLoisirs) }}
+                                            </td>
+                                            <td>
+                                                {{ form_widget(demande.typeLoisirs) }}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                {{ form_label(demande.adresse) }}
+                                            </td>
+                                            <td>
+                                                {{ form_widget(demande.adresse) }}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                {{ form_label(demande.description) }}
+                                            </td>
+                                            <td>
+                                                {{ form_widget(demande.description) }}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                {{ form_label(demande.horaire_ouverture) }}
+                                            </td>
+                                            <td>
+                                                <div>
+                                                    {{ form_widget(demande.horaire_ouverture) }}{{ form_widget(demande.horaire_fermeture) }}
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                {{ form_label(demande.num_tel) }}
+                                            </td>
+                                            <td>
+
+                                                {{ form_widget(demande.num_tel) }}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                {{ form_label(demande.url) }}
+                                            </td>
+                                            <td>
+                                                {{ form_widget(demande.url) }}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                {{ form_label(demande.budgetmoyen) }}
+                                            </td>
+                                            <td>
+                                                {{ form_widget(demande.budgetmoyen) }} <strong>DT</strong>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                {{ form_label(demande.image_principale) }}
+                                            </td>
+                                            <td>
+                                                {{ form_widget(demande.image_principale) }}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+
+                                            </td>
+                                            <td>
+                                                {{ form_end(demande) }}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+
+                                            </td>
+                                            <td>
+                                                <strong><input value="Ajouter Un Etablissement" class="btn btn-shadow btn-success" type="submit"></strong>
+                                            </td>
+
+                                        </tr>
+                                    </table>
+                                </header>
+                            </section>
+                        </div>
+                    </div>
+                </section>
+            </section>
+        </div>
+    </section>
+{% endblock %}

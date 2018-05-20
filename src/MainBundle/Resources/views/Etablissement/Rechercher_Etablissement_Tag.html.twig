@@ -1,0 +1,23 @@
+{% extends "Base.html.twig" %}
+
+{% block Tag %}
+    <section class="food_menu bd-bottom padding">
+    <div class="container">
+        <div class="section_heading align-center mb-40 mt-40">
+            <h2>Tag : {{ app.request.get('tag') }}</h2>
+        </div>
+    <div class="food_list">
+        {% for etablissements in eta %}
+            <div class="col-sm-3 col-xs-6 xs-padding">
+                <div class="food_content align-center">
+                    <a href="{{ path('Afficher_Etablissement_Client',{'id':etablissements.id}) }}"><img src="{{ asset('img/' ~ etablissements.imagePrincipale) }}" alt="food" style="height: 200px;width: 230px;"></a>                        <h3></h3>
+                    <h3><a style="color: #303133" href="{{ path('Afficher_Etablissement_Client',{'id':etablissements.id}) }}">{{ etablissements.nom }}</a></h3>
+                    <h4 style="margin-bottom: 5px" class="price">{{ etablissements.budgetmoyen }} DT</h4>
+                    <p style="font-weight: bold">{{ etablissements.horaireouverture | date('H:i') }}-{{ etablissements.horairefermeture | date('H:i') }}</p>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+    </div>
+    </section>
+{% endblock %}

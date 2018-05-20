@@ -1,0 +1,91 @@
+{% extends "baseAdmin.html.twig" %}
+{% block pie %}
+    <section id="main-content" xmlns="http://www.w3.org/1999/html">
+    <section class="wrapper">
+        <div class="row state-overview">
+            <div class="col-lg-3 col-sm-6">
+                <section class="panel">
+                    <div class="symbol terques">
+                        <i class="fa fa-user"></i>
+                    </div>
+                    <div class="value">
+                        <h1 >
+                            {{ users }}
+                        </h1>
+                        <p>Utilisateurs</p>
+                    </div>
+                </section>
+            </div>
+
+            <div class="col-lg-3 col-sm-6">
+                <section class="panel">
+                    <div class="symbol red">
+                        <i class="fa fa-tags"></i>
+                    </div>
+                    <div class="value">
+                        <h1 >
+                            {{ events }}
+                        </h1>
+                        <p>Evenements</p>
+                    </div>
+                </section>
+            </div>
+            <div class="col-lg-3 col-sm-6">
+                <section class="panel">
+                    <div class="symbol yellow">
+                        <i class="fa fa-shopping-cart"></i>
+                    </div>
+                    <div class="value">
+                        <h1 >
+                        {{ offres }}
+                        </h1>
+                        <p>Offres</p>
+                    </div>
+                </section>
+            </div>
+            <div class="col-lg-3 col-sm-6">
+                <section class="panel">
+                    <div class="symbol blue">
+                        <i class="fa fa-bar-chart-o"></i>
+                    </div>
+                    <div class="value">
+                        <h1 >
+                            {{ etabs }}
+                        </h1>
+                        <p>Etablissements</p>
+                    </div>
+                </section>
+            </div>
+        </div>
+        <div class="row">
+
+            <div class="col-lg-8">
+                    <h3>Pourcentages des établissements par type: </h3>
+                <div id="div_chart"></div><br>
+                        <h3>Nombre de visites des établissements par type: </h3>
+                <div id="oldColumnChart"></div><br>
+                        <h3>Nombre de likes des établissements par type: </h3>
+                <div id="newColumnChart"></div>
+
+
+                <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+                <script type="text/javascript">
+                    {{ gc_draw([piechart,colchart, colchart2], ['div_chart','oldColumnChart', 'newColumnChart']) }}
+                </script>
+
+
+
+
+            </div>
+
+
+
+
+         </div>
+
+
+            <!-- page end-->
+    </section>
+    </section>
+    <!--main content end-->
+{% endblock %}

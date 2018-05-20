@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Mirrored from thevectorlab.net/flatlab/ by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 10 Feb 2018 19:06:26 GMT -->
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="Mosaddek">
+    <meta name="keyword" content="FlatLab, Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
+    <link rel="shortcut icon" href="{{ asset('bundles/main/BackEnd/img/favicon.html') }}">
+
+    <title>Bons Plans Admin Interface</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="{{ asset('bundles/main/BackEnd/css/bootstrap.min.css')}}" rel="stylesheet">
+    <link href="{{ asset('bundles/main/BackEnd/css/bootstrap-reset.css')}}" rel="stylesheet">
+    <!--external css-->
+    <link href="{{ asset('bundles/main/BackEnd/assets/font-awesome/css/font-awesome.css')}}" rel="stylesheet" />
+    <link href="{{ asset('bundles/main/BackEnd/assets/jquery-easy-pie-chart/jquery.easy-pie-chart.css')}}" rel="stylesheet" type="text/css" media="screen"/>
+    <link rel="stylesheet" href="{{ asset('bundles/main/BackEnd/css/owl.carousel.css')}}" type="text/css">
+
+    <!--right slidebar-->
+    <link href="{{ asset('bundles/main/BackEnd/css/slidebars.css')}}" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+
+    <link href="{{ asset('bundles/main/BackEnd/css/style.css')}}" rel="stylesheet">
+    <link href="{{ asset('bundles/main/BackEnd/css/style-responsive.css')}}" rel="stylesheet" />
+
+    <script src="{{ asset('bundles/main/js/jquery-3.2.1.min.js') }}"></script>
+
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 tooltipss and media queries -->
+    <!--[if lt IE 9]>
+    <script src="{{ asset('bundles/main/BackEnd/js/html5shiv.js')}}"></script>
+    <script src="{{ asset('bundles/main/BackEnd/js/respond.min.js')}}"></script>
+    <![endif]-->
+    <style>
+        #ABC
+        {
+            background-color: #ffffff;
+        }
+    </style>
+    <style>
+        #ABCD
+        {
+            text-align: left;
+            font-style: normal;
+            padding: 10px;
+            background: rgba(80,86,82,0.65);
+            font-size: 16px;
+            font-weight: 500;
+        }
+    </style>
+    <style>
+        #ABCDE
+        {
+            text-align: center;
+        }
+    </style>
+    <style>
+        .A
+        {
+            margin-bottom: -10px;
+        }
+    </style>
+    <style>
+        .B
+        {
+            margin-bottom: 10px;
+        }
+    </style>
+    <style>
+        .AB
+        {
+            margin-left: 10px;
+        }
+    </style>
+</head>
+
+<body>
+<section id="container">
+    <!--header start-->
+    <header class="header white-bg">
+        <div class="sidebar-toggle-box">
+            <i class="fa fa-bars"></i>
+        </div>
+        <!--logo start-->
+
+        <a href="{{ path('main_homepage_admin')}}" class="logo">Bons<span>Plans</span></a>
+        <!--logo end-->
+        <div class="nav notify-row" id="top_menu">
+            <!--  notification start -->
+            <ul class="nav top-menu">
+                <!-- settings start -->
+                <li id="header_notification_bar" class="dropdown">
+                    <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+
+                        <i class="fa fa-bell-o"></i>
+                        <span class="badge bg-warning">7</span>
+                    </a>
+                    <ul class="dropdown-menu extended notification">
+                        <div class="notify-arrow notify-arrow-yellow"></div>
+                        <li>
+                            <p class="yellow">You have 7 new notifications</p>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <span class="label label-danger"><i class="fa fa-bolt"></i></span>
+                                Server #3 overloaded.
+                                <span class="small italic">34 mins</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <span class="label label-warning"><i class="fa fa-bell"></i></span>
+                                Server #10 not respoding.
+                                <span class="small italic">1 Hours</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <span class="label label-danger"><i class="fa fa-bolt"></i></span>
+                                Database overloaded 24%.
+                                <span class="small italic">4 hrs</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <span class="label label-success"><i class="fa fa-plus"></i></span>
+                                New user registered.
+                                <span class="small italic">Just now</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <span class="label label-info"><i class="fa fa-bullhorn"></i></span>
+                                Application error.
+                                <span class="small italic">10 mins</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">See all notifications</a>
+                        </li>
+                    </ul>
+                </li>
+                <!-- notification dropdown end -->
+            </ul>
+            <!--  notification end -->
+        </div>
+        <div class="horizontal-menu navbar-collapse collapse ">
+            <ul class="nav navbar-nav">
+                {% block Afficher_Tout %}
+                {% endblock %}
+                <li class="dropdown">
+                    <a data-toggle="dropdown" data-hover="dropdown" class="dropdown-toggle" href="#"> Filtrer Par Type <b class=" fa fa-angle-down"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="{{ path('Filtrer_Etablissement',{'critere':'Rest'}) }}"><i class="fa fa-cutlery"></i> Cafés/Restaurants</a></li>
+                        <li><a href="{{ path('Filtrer_Etablissement',{'critere':'Shops'}) }}"><i class="fa fa-shopping-cart"></i> Boutiques</a></li>
+                        <li><a href="{{ path('Filtrer_Etablissement',{'critere':'hotels'}) }}"><i class="fa fa-star"></i> Hotels</a></li>
+                        <li><a href="{{ path('Filtrer_Etablissement',{'critere':'Autres'}) }}"><i class="fa fa-building-o"></i> Autres</a></li>
+                    </ul>
+                </li>
+                {% block Trier %}
+                {% endblock %}
+            </ul>
+        </div>
+        <div class="top-nav ">
+            <!--search & user info start-->
+            <ul class="nav pull-right top-menu">
+                <li>
+                    <form action="{{ path('Rechercher_Etablissement') }}" method="post">
+                        <input name="abc" type="text" class="form-control search" placeholder="Nom">
+                    </form>
+                </li>
+                <!-- user login dropdown start-->
+                <li class="dropdown">
+                    <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                        <img alt="" src="{{ asset('bundles/main/BackEnd/img/avatar1_small.jpg')}}">
+                        <span class="username">{{ app.user.username }}</span>
+                        <b class="caret"></b>
+                    </a>
+                    <ul class="dropdown-menu extended logout">
+                        <div class="log-arrow-up"></div>
+                        <li><a href="{{ path('fos_user_security_logout')}}"><i class="fa fa-key"></i> Se Déconnecter</a></li>
+                    </ul>
+                </li>
+                <li class="sb-toggle-right">
+                    <i class="fa  fa-align-right"></i>
+                </li>
+                <!-- user login dropdown end -->
+            </ul>
+            <!--search & user info end-->
+        </div>
+    </header>
+    <!--header end-->
+    <!--sidebar start-->
+    <aside>
+        <div id="sidebar"  class="nav-collapse">
+            <!-- sidebar menu start-->
+            <ul class="sidebar-menu" id="nav-accordion">
+                <li>
+                    <a class="active" href="{{ path('dashboard')}}">
+                        <i class="fa fa-dashboard"></i>
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+
+                <li class="sub-menu">
+                    <a href="javascript:" >
+                        <i class="fa fa-building-o"></i>
+                        <span>Etablissements</span>
+                    </a>
+                    <ul class="sub">
+                        <li><a  href="{{ path('Ajouter_Etablissement_Admin')}}">Ajouter</a></li>
+                    </ul>
+                    <ul class="sub">
+                        <li><a  href="{{ path('Afficher_Etablissement_Admin')}}">Afficher Tout</a></li>
+                    </ul>
+                </li>
+
+                <li class="sub-menu">
+                    <a href="javascript:" >
+                        <i class="fa fa-calendar"></i>
+                        <span>Evenements</span>
+                    </a>
+                    <ul class="sub">
+                        <li><a  href="{{ path('all_events_Admin')}}">Afficher Tout</a></li>
+                    </ul>
+                </li>
+
+                <li class="sub-menu">
+                    <a href="javascript:" >
+                        <i class="fa fa-shopping-cart"></i>
+                        <span>Offres</span>
+                    </a>
+                    <ul class="sub">
+                        <li><a  href="{{ path('all_offres_Admin')}}">Afficher Tout</a></li>
+                    </ul>
+                </li>
+                <li >
+                    <a href="{{ path('all_demandes') }}" >
+                        <i class=" fa fa-envelope"></i>
+                        <span>Demandes Etablissements</span>
+                    </a>
+                </li>
+                <li >
+                    <a href="{{ path('all_demandes_partenariat_admin') }}" >
+                        <i class=" fa fa-envelope"></i>
+                        <span>Demandes Partenariat</span>
+                    </a>
+                </li>
+                <li >
+                    <a href="{{ path('mes_partenaires') }}" >
+                        <i class=" fa fa-envelope"></i>
+                        <span>Mes partenaires</span>
+                    </a>
+                </li>
+                <li >
+                    <a href="https://www.google.com/gmail" >
+                        <i class=" fa fa-envelope"></i>
+                        <span>Mail</span>
+                    </a>
+                </li>
+                <li >
+                    <a href="{{ path('allReclamations') }}" >
+                        <i class=" fa fa-envelope"></i>
+                        <span>Réclamation</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </aside>
+    <!--sidebar end-->
+</section>
+
+{% block Layout_Back_Admin %}
+{% endblock %}
+{% block pie %}
+{% endblock %}
+{% block Ajouter_Etablissement %}
+{% endblock %}
+
+{% block Afficher_Etablissement %}
+{% endblock %}
+
+{% block Afficher_Evenement_ParId_etab %}
+{% endblock %}
+{% block script %}
+{% endblock %}
+
+{% block Afficher_Evenement %}
+{% endblock %}
+
+{% block Afficher_Etablissement_ParId %}
+{% endblock %}
+
+{% block Afficher_Etablissement1 %}
+{% endblock %}
+
+
+{% block Afficher_Evenement_ParId %}
+{% endblock %}
+
+{% block stat1 %}
+{% endblock %}
+
+{% block Afficher_offres_etab %}
+{% endblock %}
+{% block Photo %}
+{% endblock %}
+
+{% block Afficher_Offre %}
+{% endblock %}
+
+{% block Afficher_Offre_ParId %}
+{% endblock %}
+
+{% block Afficher_offres_Tout %}
+{% endblock %}
+
+<!-- Right Slidebar start -->
+<div class="sb-slidebar sb-right sb-style-overlay">
+    <h5 class="side-title">Online Customers</h5>
+    <ul class="quick-chat-list">
+        <li class="online">
+            <div class="media">
+                <a href="#" class="pull-left media-thumb">
+                    <img alt="" src="{{ asset('bundles/main/BackEnd/img/chat-avatar2.jpg')}}" class="media-object">
+                </a>
+                <div class="media-body">
+                    <strong>John Doe</strong>
+                    <small>Dream Land, AU</small>
+                </div>
+            </div><!-- media -->
+        </li>
+        <li class="online">
+            <div class="media">
+                <a href="#" class="pull-left media-thumb">
+                    <img alt="" src="{{ asset('bundles/main/BackEnd/img/chat-avatar.jpg')}}" class="media-object">
+                </a>
+                <div class="media-body">
+                    <div class="media-status">
+                        <span class=" badge bg-important">3</span>
+                    </div>
+                    <strong>Jonathan Smith</strong>
+                    <small>United States</small>
+                </div>
+            </div><!-- media -->
+        </li>
+
+        <li class="online">
+            <div class="media">
+                <a href="#" class="pull-left media-thumb">
+                    <img alt="" src="{{ asset('bundles/main/BackEnd/img/pro-ac-1.png')}}" class="media-object">
+                </a>
+                <div class="media-body">
+                    <div class="media-status">
+                        <span class=" badge bg-success">5</span>
+                    </div>
+                    <strong>Jane Doe</strong>
+                    <small>ABC, USA</small>
+                </div>
+            </div><!-- media -->
+        </li>
+        <li class="online">
+            <div class="media">
+                <a href="#" class="pull-left media-thumb">
+                    <img alt="" src="{{ asset('bundles/main/BackEnd/img/avatar1.jpg')}}" class="media-object">
+                </a>
+                <div class="media-body">
+                    <strong>Anjelina Joli</strong>
+                    <small>Fockland, UK</small>
+                </div>
+            </div><!-- media -->
+        </li>
+        <li class="online">
+            <div class="media">
+                <a href="#" class="pull-left media-thumb">
+                    <img alt="" src="{{ asset('bundles/main/BackEnd/img/mail-avatar.jpg')}}" class="media-object">
+                </a>
+                <div class="media-body">
+                    <div class="media-status">
+                        <span class=" badge bg-warning">7</span>
+                    </div>
+                    <strong>Mr Tasi</strong>
+                    <small>Dream Land, USA</small>
+                </div>
+            </div><!-- media -->
+        </li>
+    </ul>
+    <h5 class="side-title"> pending Task</h5>
+    <ul class="p-task tasks-bar">
+        <li>
+            <a href="#">
+                <div class="task-info">
+                    <div class="desc">Dashboard v1.3</div>
+                    <div class="percent">40%</div>
+                </div>
+                <div class="progress progress-striped">
+                    <div style="width: 40%" aria-valuemax="100" aria-valuemin="0" aria-valuenow="40" role="progressbar" class="progress-bar progress-bar-success">
+                        <span class="sr-only">40% Complete (success)</span>
+                    </div>
+                </div>
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <div class="task-info">
+                    <div class="desc">Database Update</div>
+                    <div class="percent">60%</div>
+                </div>
+                <div class="progress progress-striped">
+                    <div style="width: 60%" aria-valuemax="100" aria-valuemin="0" aria-valuenow="60" role="progressbar" class="progress-bar progress-bar-warning">
+                        <span class="sr-only">60% Complete (warning)</span>
+                    </div>
+                </div>
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <div class="task-info">
+                    <div class="desc">Iphone Development</div>
+                    <div class="percent">87%</div>
+                </div>
+                <div class="progress progress-striped">
+                    <div style="width: 87%" aria-valuemax="100" aria-valuemin="0" aria-valuenow="20" role="progressbar" class="progress-bar progress-bar-info">
+                        <span class="sr-only">87% Complete</span>
+                    </div>
+                </div>
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <div class="task-info">
+                    <div class="desc">Mobile App</div>
+                    <div class="percent">33%</div>
+                </div>
+                <div class="progress progress-striped">
+                    <div style="width: 33%" aria-valuemax="100" aria-valuemin="0" aria-valuenow="80" role="progressbar" class="progress-bar progress-bar-danger">
+                        <span class="sr-only">33% Complete (danger)</span>
+                    </div>
+                </div>
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <div class="task-info">
+                    <div class="desc">Dashboard v1.3</div>
+                    <div class="percent">45%</div>
+                </div>
+                <div class="progress progress-striped active">
+                    <div style="width: 45%" aria-valuemax="100" aria-valuemin="0" aria-valuenow="45" role="progressbar" class="progress-bar">
+                        <span class="sr-only">45% Complete</span>
+                    </div>
+                </div>
+
+            </a>
+        </li>
+        <li class="external">
+            <a href="#">See All Tasks</a>
+        </li>
+    </ul>
+</div>
+<!-- Right Slidebar end -->
+
+</section>
+<!-- js placed at the end of the document so the pages load faster -->
+<script src="{{ asset('bundles/main/BackEnd/js/jquery.js')}}"></script>
+<script src="{{ asset('bundles/main/BackEnd/js/bootstrap.min.js')}}"></script>
+<script class="include" type="text/javascript" src="{{ asset('bundles/main/BackEnd/js/jquery.dcjqaccordion.2.7.js')}}"></script>
+<script src="{{ asset('bundles/main/BackEnd/js/jquery.scrollTo.min.js')}}"></script>
+<script src="{{ asset('bundles/main/BackEnd/js/jquery.nicescroll.js')}}" type="text/javascript"></script>
+<script src="{{ asset('bundles/main/BackEnd/js/jquery.sparkline.js')}}" type="text/javascript"></script>
+<script src="{{ asset('bundles/main/BackEnd/assets/jquery-easy-pie-chart/jquery.easy-pie-chart.js')}}"></script>
+<script src="{{ asset('bundles/main/BackEnd/js/owl.carousel.js')}}" ></script>
+<script src="{{ asset('bundles/main/BackEnd/js/jquery.customSelect.min.js')}}" ></script>
+<script src="{{ asset('bundles/main/BackEnd/js/respond.min.js')}}" ></script>
+
+<!--right slidebar-->
+<script src="{{ asset('bundles/main/BackEnd/js/slidebars.min.js')}}"></script>
+
+<!--common script for all pages-->
+<script src="{{ asset('bundles/main/BackEnd/js/common-scripts.js')}}"></script>
+
+<!--script for this page-->
+<script src="{{ asset('bundles/main/BackEnd/js/sparkline-chart.js')}}"></script>
+<script src="{{ asset('bundles/main/BackEnd/js/easy-pie-chart.js')}}"></script>
+<script src="{{ asset('bundles/main/BackEnd/js/count.js')}}"></script>
+
+<script>
+
+    //owl carousel
+
+    $(document).ready(function() {
+        $("#owl-demo").owlCarousel({
+            navigation : true,
+            slideSpeed : 300,
+            paginationSpeed : 400,
+            singleItem : true,
+            autoPlay:true
+
+        });
+    });
+
+    //custom select box
+
+    $(function(){
+        $('select.styled').customSelect();
+    });
+
+    $(window).on("resize",function(){
+        var owl = $("#owl-demo").data("owlCarousel");
+        owl.reinit();
+    });
+
+</script>
+
+</body>
+
+<!-- Mirrored from thevectorlab.net/flatlab/ by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 10 Feb 2018 19:07:15 GMT -->
+</html>

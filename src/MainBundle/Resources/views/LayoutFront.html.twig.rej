@@ -1,0 +1,10 @@
+diff a/src/MainBundle/Resources/views/LayoutFront.html.twig b/src/MainBundle/Resources/views/LayoutFront.html.twig	(rejected hunks)
+@@ -238,7 +238,7 @@
+                             <h4 class="price">$499</h4>
+                         </div>
+                     </div>
+-                    <div class="col-sm-3 col-xs-6 xs-padding">
++                    <div class="col-sm-3 col-xs-6 ">
+                         <div class="food_content align-center">
+                             <img src="{{ asset('bundles/main/img/f-2.jpg') }}" alt="food">
+                             <h3>Seafood Paella</h3>

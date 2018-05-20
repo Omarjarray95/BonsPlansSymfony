@@ -1,0 +1,73 @@
+
+{% extends 'baseAdmin.html.twig' %}
+
+{% block Afficher_Tout %}
+    <li><a href="{{ path('Afficher_Etablissement_Admin') }}">Afficher Tout</a></li>
+{% endblock %}
+
+{% block Trier %}
+    <li class="dropdown">
+        <a data-toggle="dropdown" data-hover="dropdown" class="dropdown-toggle" href="#"> Trier Par <b class=" fa fa-angle-down"></b></a>
+        <ul class="dropdown-menu">
+            <li><a href="{{ path('Trier_Etablissement',{'critere':'HOA'}) }}"><i class="fa fa-sort-desc"></i> Horaire D'Ouverture</a></li>
+            <li><a href="{{ path('Trier_Etablissement',{'critere':'HFD'}) }}"><i class="fa fa-sort-asc"></i> Horaire De Fermeture</a></li>
+            <li><a href="{{ path('Trier_Etablissement',{'critere':'BMA'}) }}"><i class="fa fa-sort-desc"></i> Budget Moyen</a></li>
+            <li><a href="{{ path('Trier_Etablissement',{'critere':'BMD'}) }}"><i class="fa fa-sort-desc"></i> Budget Moyen</a></li>
+        </ul>
+    </li>
+{% endblock %}
+
+{% block Afficher_Etablissement %}
+    <section id="main-content">
+        <section class="wrapper">
+            <div class="directory-info-row">
+                <div class="row">
+
+                        <div class="col-md-6 col-sm-6">
+                            <div class="panel">
+                                <div class="panel-body">
+                                    <div class="media">
+
+                                        <h2> <strong> Formulaire De Contact</strong> </h2>
+                                        <br>
+                                        {{ form_start(form) }}
+                                        <table>
+
+                                            <tr>
+                                                <td>
+                                                    {{ form_label(form.text) }}
+                                                </td>
+                                                <td>
+                                                    {{ form_widget(form.text) }}
+                                                </td>
+                                            </tr>
+
+                                            <tr>
+                                                <td>
+
+                                                </td>
+                                                <td>
+                                                    {{ form_end(form) }}
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <strong><input value="Envoyer" class="btn btn-shadow btn-success" type="submit"></strong>
+                                                </td>
+
+                                            </tr>
+
+                                        </table>
+
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                </div>
+            </div>
+        </section>
+    </section>
+
+{% endblock %}

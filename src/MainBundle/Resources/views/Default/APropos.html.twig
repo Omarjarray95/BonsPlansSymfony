@@ -1,0 +1,69 @@
+{% extends 'base.html.twig' %}
+
+{% block apropos %}
+<section class="page_header">
+    <div class="container">
+        <div class="display-table">
+            <div class="table-cell">
+                <div class="page_content align-center">
+                    <h2 class="text-white">About Hangout</h2>
+                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. <br>It has survived not only five centuries.</p>
+                    <ol class="breadcrumb">
+                        <li><a href="{{ asset('bundles/main/index.html')}}">Home</a></li>
+                        <li class="active">About Us</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+</section><!-- /.page_header -->
+
+<section id="about" class="about_block bg-grey bd-bottom padding">
+    <div class="container">
+        <div class="col-md-8 col-md-offset-2">
+            <div class="about_content align-center mb-40">
+                <h2 class="mb-15">We Make Delecious Foods Since 1952.</h2>
+                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. Lorem Ipsum has been the industry's standard dummy text ever since the when an unknown printer took a galley of type scrambled it to make a type specimen book.</p>
+                <p>Lorem Ipsum has been the industry's standard dummy text ever since the when an unknown printer took a galley of type scrambled it to make a type specimen book.</p>
+                <img src="{{ asset('bundles/main/img/sign.png')}}" alt="">
+            </div>
+        </div>
+        <div class="col-xs-12">
+            <div class="company">
+                <img src="{{ asset('bundles/main/img/about.jpg')}}" alt="about">
+            </div>
+        </div>
+    </div>
+</section> <!--/.about_section -->
+
+<section class="stuff_section bd-bottom padding">
+    <div class="container">
+        <div class="section_heading align-center mb-40">
+            <h2>Professional Stuff</h2>
+            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+        </div><!-- /.section_heading -->
+        <div class="col-sm-4 col-xs-6 xs-padding">
+            <div class="stuff_content align-center">
+                <img class="mb-15" src="{{ asset('bundles/main/img/stuff-1.jpg')}}" alt="stuff">
+                <h3>Jonathan Smith | <span>Executif Chef</span></h3>
+                <p>Lorem Ipsum is simply dummy text of <br> the printing industry.</p>
+            </div>
+        </div>
+        <div class="col-sm-4 col-xs-6 xs-padding">
+            <div class="stuff_content align-center">
+                <img class="mb-15" src="{{ asset('bundles/main/img/stuff-2.jpg')}}" alt="stuff">
+                <h3>Angelina Rose | <span>Executif Chef</span></h3>
+                <p>Lorem Ipsum is simply dummy text of <br> the printing industry.</p>
+            </div>
+        </div>
+        <div class="col-sm-4 col-xs-6 xs-padding">
+            <div class="stuff_content align-center">
+                <img class="mb-15" src="{{ asset('bundles/main/img/stuff-3.jpg')}}" alt="stuff">
+                <h3>Michel Brown | <span>Executif Chef</span></h3>
+                <p>Lorem Ipsum is simply dummy text of <br> the printing industry.</p>
+            </div>
+        </div>
+    </div>
+</section><!-- /.stuff_section -->
+{% endblock %}
+

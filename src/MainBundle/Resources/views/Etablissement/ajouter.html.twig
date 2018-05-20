@@ -1,0 +1,187 @@
+{% extends 'Base.html.twig' %}
+
+{% block AjouterEtablissement %}
+    <section id="reservation" class="reservation_section bg-grey">
+    <div class="container padding">
+    <section id="main-content">
+        <section class="wrapper">
+            <div class="row">
+                <div class="col-lg-12 col-sm-offset-0">
+                    <section class="panel" id="ABC">
+                        <header style="font-size: 20px" class="panel-heading col-sm-offset-0" id="ABCDE">
+                            <strong>Ajouter Un Etablissement</strong>
+                        </header>
+                        <header class="panel-heading">
+                            {{ form_start(e) }}
+                            <table>
+                                <tr>
+                                    <td>
+                                        {{ form_label(e.nom) }}
+                                    </td>
+                                    <td>
+                                        {{ form_widget(e.nom) }}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        {{ form_label(e.type) }}
+                                    </td>
+                                    <td>
+                                        {{ form_widget(e.type) }} <p id="Type"></p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        {{ form_label(e.adresse) }}
+                                    </td>
+                                    <td>
+                                        {{ form_widget(e.adresse) }}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        {{ form_label(e.description) }}
+                                    </td>
+                                    <td>
+                                        {{ form_widget(e.description) }}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        {{ form_label(e.horaire_ouverture) }}
+                                    </td>
+                                    <td>
+                                        <div>
+                                            {{ form_widget(e.horaire_ouverture) }} - {{ form_widget(e.horaire_fermeture) }}
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        {{ form_label(e.num_tel) }}
+                                    </td>
+                                    <td>
+
+                                        {{ form_widget(e.num_tel) }}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        {{ form_label(e.url) }}
+                                    </td>
+                                    <td>
+                                        {{ form_widget(e.url) }}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        {{ form_label(e.budgetmoyen) }}
+                                    </td>
+                                    <td>
+                                        {{ form_widget(e.budgetmoyen) }} <strong>DT</strong>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        {{ form_label(e.image_principale) }}
+                                    </td>
+                                    <td>
+                                        {{ form_widget(e.image_principale) }}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+
+                                    </td>
+                                    <td hidden>
+                                        {{ form_widget(e.typeResto) }}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+
+                                    </td>
+                                    <td hidden>
+                                        {{ form_widget(e.typeLoisirs) }}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+
+                                    </td>
+                                    <td hidden>
+                                        {{ form_widget(e.typeShops) }}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+
+                                    </td>
+                                    <td hidden>
+                                        {{ form_widget(e.nbrStars) }}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+
+                                    </td>
+                                    <td>
+                                        {{ form_end(e) }}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+
+                                    </td>
+                                    <td>
+                                        <strong><input value="Ajouter Un Etablissement" class="default_btn" type="submit"></strong>
+                                    </td>
+
+                                </tr>
+                            </table>
+                        </header>
+                    </section>
+                </div>
+            </div>
+        </section>
+    </section>
+    </div>
+    </section>
+    <script>
+        $('document').ready(function ()
+        {
+            $('#mainbundle_etablissement_type').change(function ()
+            {
+                var x = $( "#mainbundle_etablissement_type" ).val();
+                if (x=='Resto_Café')
+                {
+                    $('#Type').empty();
+                    $('#mainbundle_etablissement_typeResto').clone().appendTo('#Type');
+                    $('#Type').show();
+                }
+                if (x=='Shops')
+                {
+                    $('#Type').empty();
+                    $('#mainbundle_etablissement_typeShops').clone().appendTo('#Type');
+                    $('#Type').show();
+                }
+                if (x=='hotels')
+                {
+                    $('#Type').empty();
+                    $('#mainbundle_etablissement_nbrStars').clone().appendTo('#Type');
+                    $('#Type').show();
+                }
+                if (x=='Autres')
+                {
+                    $('#Type').empty();
+                    $('#mainbundle_etablissement_typeLoisirs').clone().appendTo('#Type');
+                    $('#Type').show();
+                }
+                if (x=='')
+                {
+                    $('#Type').hide();
+                }
+            });
+        });
+    </script>
+{% endblock %}

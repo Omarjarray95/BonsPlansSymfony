@@ -1,0 +1,35 @@
+mobile_homepage:
+    path:     /
+    defaults: { _controller: MobileBundle:Default:index }
+
+all_events_user_json:
+    path:     /events
+    defaults: { _controller: MobileBundle:Default:AfficheAllEvents }
+
+all_events_etab_json:
+    path:     /eventsEtab/{id_etab}
+    defaults: { _controller: MobileBundle:Default:AfficheEtabEvents }
+
+all_offres_etab_json:
+    path:     /offresEtab/{id_etab}
+    defaults: { _controller: MobileBundle:Default:AfficheEtabOffres }
+
+all_offres_user_json:
+    path:     /offres
+    defaults: { _controller: MobileBundle:Default:AfficheAllOffres }
+
+event_json:
+    path:     /event/{id_event}
+    defaults: { _controller: MobileBundle:Default:findEventById }
+
+offre_json:
+    path:     /offre/{id_offre}
+    defaults: { _controller: MobileBundle:Default:findOffreById }
+
+add_event:
+    path:     /addEvent
+    defaults: { _controller: MobileBundle:Default:AddEvent }
+
+add_offre:
+    path:     /addOffre/{id_etab}
+    defaults: { _controller: MobileBundle:Default:AddOffre }

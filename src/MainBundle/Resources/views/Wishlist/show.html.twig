@@ -1,0 +1,35 @@
+{% extends 'Base.html.twig' %}
+{% block ShowFav %}
+    <section id="reservation" class="reservation_section bg-grey">
+        <div class="container padding">
+            <div class="col-sm-10 col-sm-offset-1 align-left">
+                <div class="reserv_form">
+                    <div class="section_heading mb-40">
+                        <h2>Ma wishliste</h2>
+                        {#// Lehna#}
+                        {% for wish in wishes %}
+                            <div class="col-md-3">
+
+                                <p>{{ wish.favoris.nom}}</p>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
+
+{#<br>#}
+{#{% for favoris in wishes %}#}
+
+    {#<fieldset>#}
+        {#<legend>{{  favoris.favoris.nom  }}</legend>#}
+        {#<img src="{{ asset('bundles/main/img/localisation.png') }}" width="20" height="20">{{favoris.favoris.adresse  }}#}
+        {#<br>#}
+        {#<a href="{{ path('main_homepage') }}">Visiter page</a><br>#}
+        {#<a href="{{ path('delete_wish',{'id_etablissement':favoris.favoris.id}) }}">Retirer de ma wishliste</a><br>#}
+    {#</fieldset><br>#}
+
+{#{% endfor %}#}
+{#<br>#}

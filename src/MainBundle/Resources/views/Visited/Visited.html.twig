@@ -1,0 +1,50 @@
+{% extends 'Base.html.twig' %}
+{% block ShowVisited %}
+    <section id="reservation" class="reservation_section bg-grey">
+        <div class="container padding">
+            <div class="col-sm-10 col-sm-offset-1 align-left">
+                <div class="reserv_form">
+                    <div class="section_heading mb-40">
+                        <h2>Les lieux que j'ai visité</h2>
+                        <table >
+                            <tr>
+                                <th width="30%">Etablissement</th>
+                            </tr>
+                            {% for vis in v %}
+                                <tr>
+                                    <td>{{vis.favoris.nom  }}</td>
+                                </tr>
+                            {% endfor %}
+                        </table>
+                        <br><br>
+                        <h2>Les évenements que j'ai assisté</h2>
+                        <table>
+                            <tr>
+                                <th width="30%">Evenement</th><th width="30%">Date</th>
+                            </tr>
+                            {% for vis in ve %}
+                                <tr>
+                                    <td>{{vis.event.nom  }}</td>
+                                    <td>{{vis.event.date |date("m/d/Y") }}</td>
+                                </tr>
+                            {% endfor %}
+                        </table>
+                        <br><br>
+                        <h2>Les évenements que je vais assister</h2>
+                        <table >
+                            <tr>
+                                <th width="30%" >Evenement</th><th width="30%">Marquer not going</th>
+                            </tr>
+                            {% for vis in going %}
+                                <tr>
+                                    <td>{{vis.event.nom  }}</td>
+                                    <td><a href="{{ path('delete_going_event',{'id_event':vis.id}) }}">   X</a></td>
+                                </tr>
+                            {% endfor %}
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

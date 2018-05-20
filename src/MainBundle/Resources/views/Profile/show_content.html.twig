@@ -1,0 +1,137 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+
+<head>
+    <link href="{{ asset('bundles/main/BackEnd/css/style.css') }}" rel="stylesheet">
+    <link href="{{ asset('bundles/main/BackEnd/css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('bundles/main/BackEnd/assets/font-awesome/css/font-awesome.css') }}" rel="stylesheet"/>
+
+
+    <style>
+        .BAC {
+            width: 100%;
+        }
+    </style>
+    <style>
+        .white-color {
+            color: white;
+            margin-left: 3px;
+        }
+
+        #ABCD {
+            text-align: left;
+            font-style: normal;
+            padding: 10px;
+            background: rgba(80, 86, 82, 0.65);
+            font-size: 16px;
+            font-weight: 500;
+        }
+
+        .margin-30 {
+            margin: 30px;
+        }
+    </style>
+</head>
+
+<section id="reservation" class="reservation_section bg-grey ">
+    <div class="container col-lg-offset-1 col-lg-10">
+        <section class="wrapper">
+            <!-- page start-->
+            <div class="row margin-30">
+                <aside class="profile-info col-lg-offset col-lg-12">
+                    <div class="row margin-30">
+                        <div class="col-lg-2"></div>
+                        <div class="col-lg-8">
+                            <button style="margin-top: 10px" type="button" class="btn btn-default active">
+                                <a href="{{ path('fos_user_profile_show') }}" class="">
+                                    <i class="fa fa-user"></i>Page
+                                </a>
+                            </button>
+                            <button style="margin-top: 10px" class="btn btn-default">
+                                <a href="{{ path('show_responsable') }}" class=""><i class="fa fa-thumb-tack"></i>  Mes établissements </a>
+                            </button>
+                            <button style="margin-top: 10px" class="btn btn-default"><a href="{{ path('affiche_visited') }}" class="">
+                                    <i class="fa fa-thumb-tack"></i>Visités </a>
+                            </button>
+
+                                <button style="margin-top: 10px" class="btn btn-default">
+                                    <a href="{{ path('affiche_wish') }}" class="">
+                                    <i class="fa fa-thumb-tack"></i> Mes Favoris
+                                    </a>
+                                </button>
+                            <button style="margin-top: 10px" class="btn btn-default"><a href="{{ path('affiche_going') }}" class="">
+                                    <i class="fa fa-thumb-tack"></i> Going Events </a>
+                            </button>
+                            <button style="margin-top: 10px" class="btn btn-default">
+                                <a href="{{ path('affiche_interest') }}" class=""><i class="fa fa-thumb-tack"></i> Interesting Events </a>
+                            </button>
+
+                            <button style="margin-top: 10px" class="btn btn-default"><a href="{{ path('main_bundle_afficher_demande') }}"><i class="fa fa-calendar"></i> Mes Demandes </a></button>
+                            <button style="margin-top: 10px" class="btn btn-default"><a href="{{ path('main_bundle_mes_reclamations') }}"><i class="fa fa-archive"></i> Mes Reclamations </a></button>
+                        </div>
+                    </div>
+                    <section class="panel">
+                        <div class="panel-body bio-graph-info">
+                            <div class="row">
+                    <div class="social-links bio-row BAC">
+                        <a title="" data-placement="top" data-toggle="tooltip" class="tooltips" href="{{ path('fos_user_profile_edit') }}" data-original-title="Modifier"><i class="fa fa-external-link-square"> Modifier mes Informations</i></a>
+                    </div>
+                    <div class="social-links bio-row BAC">
+                        <a title="" data-placement="top" data-toggle="tooltip" class="tooltips" href="{{ path('fos_user_change_password') }}" data-original-title="Modifier"><i class="fa fa-external-link-square"> Changer mon mot de passe</i></a>
+                    </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="panel">
+                        <div class="panel-body bio-graph-info">
+                            <div class="row">
+
+                                    <div class="bio-row BAC">
+                                    <p>
+
+                                        <span><strong><i
+                                                        class="fa fa-user"></i> Pseudo</strong></span>: {{ app.user.username }}
+                                    </p>
+                                </div>
+                                <div class="bio-row BAC">
+                                    <p><span><strong>E-Mail</strong></span>: {{ app.user.email }}</p>
+                                </div>
+                                <div class="bio-row BAC">
+                                    <p><span><strong>Nom & Prénom</strong></span>: {{ app.user.nom }}</p>
+                                </div>
+                                <div class="bio-row BAC">
+                                    <p><span><strong>Sexe</strong></span>: {{ app.user.sexe }}</p>
+                                </div>
+                                <div class="bio-row BAC">
+                                    <p>
+                                        <span><strong>Date De Naissance</strong></span>: {{ app.user.datedenaissance | date('y-m-d') }}
+                                    </p>
+                                </div>
+                                <div class="bio-row BAC">
+                                    <p><span><strong>Ville</strong></span>: {{ app.user.ville }}</p>
+                                </div>
+                                <div class="bio-row BAC">
+                                    <p><span><strong>Numéro</strong></span>: {{ app.user.phone }}</p>
+                                </div>
+                                <div class="bio-row BAC">
+                                    <p><span><strong>Site Web/Blog</strong></span>:<a
+                                                href="{{ app.user.url }}">{{ app.user.url }}</a></p>
+                                </div>
+
+                            </div>
+                        </div>
+                    </section>
+                    <div class="bio-graph-heading" id="ABCD">
+                        <p><span><strong>Intro : </strong></span>{{ app.user.intro }}</p>
+                    </div>
+
+                </aside>
+
+            </div>
+
+            <!-- page end-->
+        </section>
+    </div>
+
+</section>

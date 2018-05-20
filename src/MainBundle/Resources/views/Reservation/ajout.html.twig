@@ -1,0 +1,106 @@
+{% extends "::base.html.twig" %}
+
+{% block AjouterReservation %}
+    <section id="reservation" class="bd-bottom reservation_section">
+    <div class="container padding">
+        <div class="col-sm-8">
+            <div class="reserv_form">
+                <div class="section_heading mb-40">
+                    <h2>Passez Votre Réservation En Ligne</h2>
+                </div>
+                {{ form_start(Form) }}
+                <div class="col-xs-6">
+                    <table>
+                    <tr>
+                        <td>
+                            {{ form_label(Form.nom) }}
+                        </td>
+                        <td>
+                            {{ form_widget(Form.nom) }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            {{ form_label(Form.prenom) }}
+                        </td>
+                        <td>
+                            {{ form_widget(Form.prenom) }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            {{ form_label(Form.numtel)}}
+                        </td>
+                        <td>
+                            {{ form_widget(Form.numtel)}}
+                        </td>
+                    </tr>
+                <tr>
+                    <td>
+                        {{ form_label(Form.nbrePersonnes)}}
+                    </td>
+                    <td>
+                        {{ form_widget(Form.nbrePersonnes) }}
+                    </td>
+                    <tr>
+                            <td >
+                                {{ form_label(Form.datedereservation) }}
+                            </td>
+                        <td>
+                            {{ form_widget(Form.datedereservation) }}
+                        </td>
+                        </tr>
+                <tr>
+                    <td>
+                        {{ form_label(Form.heuredereservation) }}
+                    </td>
+                    <td>
+                        {{ form_widget(Form.heuredereservation) }}
+                    </td>
+                </tr>
+                        <tr>
+                            <td>
+
+                            </td>
+                            <td>
+                                {{ form_end(Form) }}
+                            </td>
+                        </tr>
+                </table>
+            </div>
+
+                <div class="form-group">
+                </div>
+                <div id="msg-status" class="alert" role="alert"></div>
+            </div>
+
+        <div class="col-sm-offset-8 hidden-xs">
+            <div class="reservation_img">
+                <img src="{{ asset('img/fathers-day-button.png') }}" alt="reservation">
+            </div>
+        </div>
+    </div>
+
+</section>
+    <div class="sponsor_section bg-grey">
+        <div class="container">
+            <ul id="sponsor_carousel" class="sponsor_items owl-carousel">
+                <li class="sponsor_item">
+                    <img src="{{ asset('img/sponsor-1.png')}}" alt="sponsor-image">
+                </li>
+                <li class="sponsor_item">
+                    <img src="{{ asset('img/sponsor-2.png')}}" alt="sponsor-image">
+                </li>
+                <li class="sponsor_item">
+                    <img src="{{ asset('img/sponsor-3.png')}}" alt="sponsor-image">
+                </li>
+                <li class="sponsor_item">
+                    <img src="{{ asset('img/sponsor-4.png')}}" alt="sponsor-image">
+                </li>
+                <li class="sponsor_item">
+                    <img src="{{ asset('img/sponsor-5.png')}}" alt="sponsor-image">
+                </li>
+            </ul>
+        </div>
+    </div>
+{% endblock %}

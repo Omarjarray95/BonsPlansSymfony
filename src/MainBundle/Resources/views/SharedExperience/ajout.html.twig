@@ -1,0 +1,64 @@
+{% extends "::base.html.twig" %}
+
+{% block AjouterExperience %}
+<h1>Welcome to the SharedExperience:Ajout page</h1>
+<section id="reservation" class="bd-bottom reservation_section">
+    <div class="container padding">
+        <div class="col-sm-8">
+            <div class="reserv_form">
+                <div class="section_heading mb-40">
+                    <h2>Partagez Votre Expérience Avec D'Autres Intenautes</h2>
+                </div>
+                <div class="col-sm-offset-12 hidden-xs">
+                    <div class="reservation_img">
+                        <img src="{{ asset('img/246x0w.png') }}" alt="reservation">
+                    </div>
+                </div>
+                {{ form_start(Form) }}
+
+                <div class="col-xs-6">
+                    <table>
+                    <tr>
+                        <td>
+                            {{ form_label(Form.checkInDate)}}
+                        </td>
+                        <td>
+                            {{ form_widget(Form.checkInDate)}}
+                        </td>
+                    </tr>
+                <tr>
+                    <td>
+                        {{ form_label(Form.impression)}}
+                    </td>
+                    <td>
+                        {{ form_widget(Form.impression) }}
+                    </td>
+                </tr>
+                        <tr>
+                            <td>
+
+                            </td>
+                            <td>
+                                {{ form_widget(Form.sharedExperienceFile)}}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+
+                            </td>
+                            <td>
+                                {{ form_end(Form) }}
+                            </td>
+                        </tr>
+                </table>
+            </div>
+
+            <div class="form-group">
+            </div>
+            <div id="msg-status" class="alert" role="alert"></div>
+
+        </div>
+    </div>
+</section>
+
+{% endblock %}

@@ -1,0 +1,217 @@
+{% set path_v = exist_v != true ? path('delete_visited' , {'id' : etab.id}) : path('ajouter_visited' , {'id' : etab.id}) %}
+{% set state_v = exist_v != true ? 'Visité' : 'Marquer visité' %}
+
+{% set path_wish = exist_w != true ? path('delete_wish' , {'id' : etab.id}) : path('ajouter_wish' , {'id' : etab.id}) %}
+{% set state_wish = exist_w != true ? 'Unlike' : 'Like' %}
+
+{% extends 'Base.html.twig' %}
+
+
+
+{% block AfficherEtablissement %}
+
+
+    <link href="{{ asset('bundles/main/BackEnd/assets/font-awesome/css/font-awesome.css') }}" rel="stylesheet"
+          xmlns="http://www.w3.org/1999/html"/>
+    {% if  etab.type=='Restaurants/Cafés' %}
+    <section class="page_header"  style="background-image: url({{ asset('bundles/main/img/resto.jpg') }})">
+        {% elseif etab.type=='Shops' %}
+         <section class="page_header"  style="background-image: url({{ asset('bundles/main/img/shops.jpeg') }})">
+            {% elseif etab.type=='hotels' %}
+         <section class="page_header"  style="background-image: url({{ asset('bundles/main/img/hotel.jpeg') }})">
+            {% elseif etab.typeLoisirs=='Cinema' %}
+        <section class="page_header"  style="background-image: url({{ asset('bundles/main/img/cinema.jpeg') }})">
+            {% elseif etab.typeLoisirs=='Salle de sport' %}
+        <section class="page_header"  style="background-image: url({{ asset('bundles/main/img/sport.jpeg') }})">
+            {% elseif etab.typeLoisirs=='Parc d attraction' %}
+        <section class="page_header"  style="background-image: url({{ asset('bundles/main/img/parc.jpeg') }})">
+            {% elseif etab.typeLoisirs=='Spa' %}
+        <section class="page_header"  style="background-image: url({{ asset('bundles/main/img/spa.jpg') }})">
+            {% elseif etab.typeLoisirs=='Centre de beaute' %}
+        <section class="page_header"  style="background-image: url({{ asset('bundles/main/img/salon.jpeg') }})">
+            {% elseif etab.typeLoisirs=='Salle de jeux' %}
+        <section class="page_header"  style="background-image: url({{ asset('bundles/main/img/games.jpeg') }})">
+            {% else %}
+          <section class="page_header"  style="background-image: url({{ asset('bundles/main/img/other.jpeg') }})">
+            {% endif %}
+
+        <div class="container">
+            <div class="display-table">
+                <div class="table-cell">
+                    <div class="page_content align-center">
+                        <h2 class="text-white">{{ etab.nom }}</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section><!-- /.page_header -->
+
+    <section class="blog_single padding">
+        <div class="container">
+            <br class="blog_content">
+            <h2 style="margin-top: -80px">{{ etab.nom }}</h2><p> {{ likes }} Likes, {{ visits }} Visites</p>
+
+                  {% if is_granted('ROLE_USER') %}
+                {% if etab.representant==user %}
+
+                            <div>
+                            <a  class="default_btn" style="margin-top: 10px" href="{{ path('Modifier_Etablissement_Admin',{'id':etab.id})}}"><strong>Modifier Les Informations De {{ etab.nom }}</strong></a></div>
+                            <div>
+                                <a  class="default_btn" style="margin-top: 10px" href="{{ path('add_event',{'id':etab.id})}}"><strong>Ajouter un évenement</strong></a>
+                                <a  class="default_btn" style="margin-top: 10px" href="{{ path('add_offre',{'id':etab.id})}}"><strong>Proposez une offre</strong></a></div>
+                            <div><a class="default_btn" style="margin-top: 10px" href="{{ path('affiche_reservation',{'id1':etab.id})}}"><strong>Reservations</strong></a>
+                                <a class="default_btn" style="margin-top: 10px" href="{{ path('recherche_res',{'id1':etab.id})}}"><strong>Rechercher Les Reservations</strong></a></div>
+
+
+
+                        {% else %}
+
+                        <div>
+                        <a href="{{ path_wish }}" class="default_btn" style="margin-top: 5px;color: #ffffff" id="js-wished"><strong>{{ state_wish }}</strong></a>
+                        <a href="{{ path_v }}" class="default_btn" style="margin-top: 5px;color: #ffffff"  id="js-visited"><strong>{{ state_v }}</strong></a>
+                        </div>
+
+                        <div>
+                        <a class="default_btn" style="margin-top: 5px;color: #ffffff" href="{{ path('ajout_reservation',{'id1':etab.id,'id2':etab.type})}}"><strong>Passer Une Réservation</strong></a>
+                        <a class="default_btn" style="margin-top: 5px;color: #ffffff"  href="{{ path('ajout_experience',{'id1':etab.id,'id2':app.user.id})}}"><strong>Partager Votre Expérience</strong></a>
+                        </div>
+                {% endif %}
+                {% endif %}
+
+            <div>
+
+            <a href="#myModal" data-toggle="modal" class="default_btn mb-15" style="margin-top: 5px;color: #ffffff">
+                <strong>Tags</strong>
+            </a>
+            <a href="{{ path('all_etab_events_user',{'id_etab':etab.id})}}"  class="default_btn mb-15" style="margin-top: 5px;color: #ffffff">
+                <strong>Evenements</strong>
+            </a>
+            <a href="{{ path('all_etab_offre_user',{'id_etab':etab.id})}}"  class="default_btn mb-15" style="margin-top: 5px;color: #ffffff">
+                <strong>Offres</strong>
+            </a>
+            </div>
+            <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="myModal" class="modal fade">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
+                            <h4 class="modal-title">Tags</h4>
+                        </div>
+                        <div class="modal-body">
+                            <form role="form" action="{{ path('Ajouter_Tag_Representant',{'id':etab.id}) }}" method="POST">
+                                <div class="form-group">
+                                    {% for tags in etab.tags %}
+                                    <div class="default_btn mb-20 alert fade in">{{ tags.name }}<a aria-hidden="true" data-dismiss="alert" class="close" style="margin-right: -20px" href="{{ path('Supprimer_Tag_Representant',{'id':tags.id,'id1':etab.id}) }}">×</a></div>
+                                    {% endfor %}<br>
+                                    <label for="exampleInputEmail1">Ajouter Un Tag</label>
+                                    <input type="text" class="form-control" name="tag">
+                                </div>
+                                {% for tag in t %}
+                                    <div class="default_btn mb-20 alert fade in"><a style="color: #ffffff" href="{{ path('Rechercher_Etablissement_Tag',{'tag':tag.name}) }}">{{ tag.name }}</a></div>
+                                {% endfor %}
+                                <div>
+                                    <button type="submit" class="btn btn-default">Ajouter Un Tag</button>
+
+                                </div>
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <br class="single-meta-info mb-25">
+            <i class="fa fa-home"></i> <strong>{{ etab.adresse }}</strong><br>
+            <i class="icon-clock"></i> <strong>{{ etab.horaireouverture | date('H:i') }}-{{ etab.horairefermeture | date('H:i') }}</strong><br>
+            <i class="icon_phone"></i> <strong>{{ etab.numtel }}</strong><br>
+            <i class="fa fa-money"></i> <strong>{{ etab.budgetmoyen }} DT</strong><br>
+            <i class="fa fa-globe"></i> <a href="{{ etab.url }}">{{ etab.url }}</a><br><br>
+
+            <a href="{{ path('Modifier_Etablissement_Photo_Admin',{'id':etab.id}) }}"><img style="margin-bottom: 40px;margin-top: 40px;padding-left: 30%;width: 600px;height: 250px" src="{{ asset('img/' ~ etab.imagePrincipale) }}"></a><br>
+
+            <p style="margin-bottom: -10px"><strong>Description :</strong></p><br>
+            <blockquote>
+                <p>{{ etab.description }}</p>
+            </blockquote>
+
+            <!-- /.REPRESENTANT -->
+
+
+            <br><br>
+            {{ socialButtons() }}
+            <br><br>
+        </div><!-- /.blog_content -->
+
+        <div class="comments-wrap" style="padding-left: 100px">
+
+            <h2 class="mb-20">Partager Votre Avis :</h2>
+            <a href="{{ path('rating',{'id':etab.id}) }}">{{ etab.rating|rating }}</a>
+            <form class="form-horizontal coment-form" method="post"
+                  action="{{ path('main_bundle_ajouut', {'id': etab.id}) }}">
+                <div class="form-group">
+                    <div class="col-sm-12">
+                        <textarea style="width: 1100px" class="form-control" rows="4" placeholder="Commenter"
+                                  name="commentaire"></textarea>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-12">
+                        <input type="submit" value="Publier" class="default_btn">
+                    </div>
+                </div>
+            </form>
+        </div><!-- /.comments-wrap -->
+        <div class="comments-wrap" style="padding-left: 100px">
+            <section class="panel" id="ABC">
+                <header class="panel-heading">
+                    <div class="comment-list mb-20">
+
+                        {% for message in app.flashes('error') %}
+
+                            <div class="alert alert-danger">
+                                <i class="fa fa-exclamation-triangle fa-2x"></i> {{ message }}
+                            </div>
+
+                        {% endfor %}
+                        <ul class="media-list">
+                            {% for d in comments %}
+                                <li class="media line-item">
+                                    <div class="media-left">
+                                        <img src="{{ asset('img/user.png') }}">
+                                    </div>
+                                    <div class="media-body">
+                                        <h4 class="media-heading"><a href="#">{{ d.user.nom }}</a></h4>
+                                        <a href="#" class="coment-date">
+                                            <time datetime="{{ d.created|date('c') }}">{{ d.created|date('l, F j, Y') }}</time>
+                                        </a>
+                                        <p>{{ d.comment }}</p>
+                                        {% if app.user == d.user %}
+                                            <a href="{{ path('main_bundle_UpdateC',{'id':d.id}) }}"><i
+                                                        class="fa fa-pencil text-primary"></i> </a>
+                                            &nbsp;
+                                            <a href="{{ path('main_bundle_DeleteC',{'id':d.id}) }}" class="remove-item"><i
+                                                        class="fa fa-times text-danger"></i> </a>
+                                        {% else %}
+                                            <a href="{{ path('main_bundle_SignalerC',{'id':d.id}) }}">Signaler</a>
+                                        {% endif %}
+                                        {% if d.updatedAt != null %}
+                                            <p>Modifié le:
+                                                <a href="#" class="coment-date">
+                                                    <time datetime="{{ d.updatedAt|date('c') }}">{{ d.updatedAt|date('l, F j, Y') }}</time>
+                                                </a>
+                                            </p>
+                                        {% endif %}
+                                    </div>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                        <div class="navigation">
+                            {{ knp_pagination_render(comments) }}
+                        </div>
+                    </div><!-- /.comment-list -->
+                </header>
+            </section>
+        </div>
+    </section><!-- /.blog_single -->
+{% endblock %}

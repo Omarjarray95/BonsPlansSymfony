@@ -1,0 +1,6 @@
+{% for notificationItem in notificationList | reverse | slice(0,4) %}
+    <a href="#">
+    {{ notificationItem[0].message | length > 46 ? notificationItem[0].message | slice(0,46) ~ '...' : notificationItem[0].message }}<br>
+        {{ notificationItem[0].date | date('y-m-d, H:i') }}
+    </a>
+{% endfor %}

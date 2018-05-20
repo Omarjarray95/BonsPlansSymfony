@@ -1,0 +1,73 @@
+{% extends "::base.html.twig" %}
+
+{% block AjouterReservation1 %}
+    <h1>Welcome to the Reservation:Ajout page</h1>
+    <section id="reservation" class="bd-bottom reservation_section">
+        <div class="container padding">
+            <div class="col-sm-8">
+                <div class="reserv_form">
+                    <div class="section_heading mb-40">
+                        <h2>Passez votre réservation en ligne</h2>
+                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.<br>It has survived not only five centuries.</p>
+                    </div>
+                    {{ form_start(Form) }}
+                    <div class="col-xs-6">
+                        <tr><td>{{ form_label(Form.nom) }}</td>
+                            <td>{{ form_widget(Form.nom) }}</td></tr>
+                    </div><br>
+                    <div class="col-xs-6">
+                        <tr><td>{{ form_label(Form.prenom) }}</td>
+                            <td>{{ form_widget(Form.prenom) }}</td></tr>
+                    </div><br>
+                    <div class="col-xs-6">
+                        <tr><td>{{ form_label(Form.numtel)}}</td><td>{{ form_widget(Form.numtel)}}</td></tr></div><br>
+                    <tr><td >{{ form_label(Form.arrivee) }}</td>
+                        <td>{{ form_widget(Form.arrivee) }}</td></tr><br>
+                <tr><td >{{ form_label(Form.depart) }}</td>
+                    <td>{{ form_widget(Form.depart) }}</td></tr><br>
+                    <tr><td>{{ form_label(Form.nbreChambres) }}</td>
+                        <td>{{ form_widget(Form.nbreChambres) }}</td></tr><br>
+                    <tr><td >{{ form_label(Form.nbreAdultes) }}</td>
+                        <td>{{ form_widget(Form.nbreAdultes) }}</td></tr><br>
+                    <tr><td >{{ form_label(Form.nbreEnfants) }}</td>
+                        <td>{{ form_widget(Form.nbreEnfants) }}</td></tr><br>
+
+                    {{ form_end(Form) }}
+                </div>
+
+                <div class="form-group">
+                </div>
+                <div id="msg-status" class="alert" role="alert"></div>
+
+            </div>
+
+            <div class="col-sm-4 hidden-xs">
+                <div class="reservation_img">
+                    <img src="{{ asset('img/fathers-day-button.png') }}" alt="reservation">
+                </div>
+            </div>
+        </div>
+
+    </section>
+    <div class="sponsor_section bg-grey">
+        <div class="container">
+            <ul id="sponsor_carousel" class="sponsor_items owl-carousel">
+                <li class="sponsor_item">
+                    <img src="{{ asset('img/sponsor-1.png')}}" alt="sponsor-image">
+                </li>
+                <li class="sponsor_item">
+                    <img src="{{ asset('img/sponsor-2.png')}}" alt="sponsor-image">
+                </li>
+                <li class="sponsor_item">
+                    <img src="{{ asset('img/sponsor-3.png')}}" alt="sponsor-image">
+                </li>
+                <li class="sponsor_item">
+                    <img src="{{ asset('img/sponsor-4.png')}}" alt="sponsor-image">
+                </li>
+                <li class="sponsor_item">
+                    <img src="{{ asset('img/sponsor-5.png')}}" alt="sponsor-image">
+                </li>
+            </ul>
+        </div>
+    </div>
+{% endblock %}

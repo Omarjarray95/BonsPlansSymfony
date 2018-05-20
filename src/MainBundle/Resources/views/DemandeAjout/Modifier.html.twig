@@ -1,0 +1,126 @@
+{% extends 'Base.html.twig' %}
+
+{% block AjouterEtablissement %}
+    <section id="reservation" class="reservation_section bg-grey">
+        <div class="container padding">
+            <section id="main-content">
+                <section class="wrapper">
+                    <div class="row">
+                        <div class="col-lg-12 col-sm-offset-0">
+                            <section class="panel" id="ABC">
+                                <header class="panel-heading col-sm-offset-0" id="ABCDE">
+                                    <strong>Ajouter Un Etablissement</strong>
+                                </header>
+                                <header class="panel-heading">
+                                    {{ form_start(modif) }}
+                                    <table>
+                                        <tr class="">
+                                            <td>
+                                                {{ form_label(modif.nom) }}
+                                            </td>
+                                            <td>
+                                                {{ form_widget(modif.nom) }}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                {{ form_label(modif.type) }}
+                                            </td>
+                                            <td>
+                                                {{ form_widget(modif.type) }}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                {{ form_label(modif.typeLoisirs) }}
+                                            </td>
+                                            <td>
+                                                {{ form_widget(modif.typeLoisirs) }}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                {{ form_label(modif.adresse) }}
+                                            </td>
+                                            <td>
+                                                {{ form_widget(modif.adresse) }}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                {{ form_label(modif.description) }}
+                                            </td>
+                                            <td>
+                                                {{ form_widget(modif.description) }}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                {{ form_label(modif.horaire_ouverture) }}
+                                            </td>
+                                            <td>
+                                                <div>
+                                                    {{ form_widget(modif.horaire_ouverture) }}{{ form_widget(modif.horaire_fermeture) }}
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                {{ form_label(modif.num_tel) }}
+                                            </td>
+                                            <td>
+
+                                                {{ form_widget(modif.num_tel) }}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                {{ form_label(modif.url) }}
+                                            </td>
+                                            <td>
+                                                {{ form_widget(modif.url) }}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                {{ form_label(modif.budgetmoyen) }}
+                                            </td>
+                                            <td>
+                                                {{ form_widget(modif.budgetmoyen) }} <strong>DT</strong>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                {{ form_label(modif.image_principale) }}
+                                            </td>
+                                            <td>
+                                                {{ form_widget(modif.image_principale) }}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+
+                                            </td>
+                                            <td>
+                                                {{ form_end(modif) }}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+
+                                            </td>
+                                            <td>
+                                                <strong><input value="Mettre à jour" class="btn btn-shadow btn-success" type="submit"></strong>
+                                            </td>
+
+                                        </tr>
+                                    </table>
+                                </header>
+                            </section>
+                        </div>
+                    </div>
+                </section>
+            </section>
+        </div>
+    </section>
+{% endblock %}

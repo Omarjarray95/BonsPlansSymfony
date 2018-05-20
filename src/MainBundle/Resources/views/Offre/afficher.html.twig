@@ -1,0 +1,55 @@
+{% extends 'Base.html.twig' %}
+
+{% block Profileoffre %}
+
+
+
+
+    <link href="{{ asset('bundles/main/BackEnd/assets/font-awesome/css/font-awesome.css') }}" rel="stylesheet"
+          xmlns="http://www.w3.org/1999/html"/>
+    <section class="page_header">
+        <div class="container">
+            <div class="display-table">
+                <div class="table-cell">
+                    <div class="page_content align-center">
+                        <h2 class="text-white">{{ (offre.offre) }} </h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <section class="blog_single padding">
+        <div class="container">
+            <br class="blog_content">
+            <h2 style="margin-top: -80px">{{ (offre.offre) }}  </h2>
+
+            <br class="single-meta-info mb-25">
+            <i class="icon-clock"></i> Date début <strong>{{ (offre.dateDebut|date("m/d/Y") ) }}</strong><br>
+            <i class="icon-clock"></i> Date fin <strong>{{ (offre.dateFin|date("m/d/Y") ) }}</strong><br>
+            <i class="fa fa-home"></i> <strong>Chez: <a style="color: #303133" href="{{ path('Afficher_Etablissement_Client',{'id':offre.etablissement.id})}}">{{ (offre.etablissement.nom) }}</a>,  {{ offre.etablissement.adresse }}</strong><br>
+            <i ></i>  Description offre:  <strong>{{ offre.description }}</strong><br>
+            {% if offre.etablissement.partenaire==1  %}
+                <i class=""></i><strong> Code promotion: </strong>{{ offre.code_promo }}<br>
+                <i class=""></i><strong> Pourcentage OFF: </strong>{{ offre.pourcentage }}<br>
+            {% endif %}
+            {% if is_granted('ROLE_USER') %}
+            {% if etab.representant==user %}
+                <div>
+                    <a  class="default_btn" style="margin-top: 5px;color: #ffffff" href="{{ path('update_offre',{'id':offre.id})}}">Modifier </a>
+                    <a  class="default_btn" style="margin-top: 5px;color: #ffffff"  href="{{ path('delete_offre',{'id':offre.id})}}">Supprimer </a></li>
+                </div>
+            {% endif %}
+            {% endif %}
+
+            {{ socialButtons() }}
+        </div>
+    </section>
+
+            </div>
+        </div>
+    </div>
+</section>
+    {% endblock %}

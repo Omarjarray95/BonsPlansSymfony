@@ -1,0 +1,50 @@
+{% extends 'baseAdmin.html.twig' %}
+
+{% block Afficher_offres_Tout %}
+    <li><a href="{{ path('all_offres_Admin') }}">Afficher Tout</a></li>
+{% endblock %}
+
+{% block Trier %}
+    <li class="dropdown">
+        <a data-toggle="dropdown" data-hover="dropdown" class="dropdown-toggle" href="#"> Trier Par <b class=" fa fa-angle-down"></b></a>
+        <ul class="dropdown-menu">
+            <li><a href="{{ path('Trier_Etablissement',{'critere':'HOA'}) }}"><i class="fa fa-sort-desc"></i> Horaire D'Ouverture</a></li>
+            <li><a href="{{ path('Trier_Etablissement',{'critere':'HFD'}) }}"><i class="fa fa-sort-asc"></i> Horaire De Fermeture</a></li>
+            <li><a href="{{ path('Trier_Etablissement',{'critere':'BMA'}) }}"><i class="fa fa-sort-desc"></i> Budget Moyen</a></li>
+            <li><a href="{{ path('Trier_Etablissement',{'critere':'BMD'}) }}"><i class="fa fa-sort-desc"></i> Budget Moyen</a></li>
+        </ul>
+    </li>
+{% endblock %}
+
+{% block Afficher_Offre %}
+    <section id="main-content">
+        <section class="wrapper">
+            <div class="directory-info-row">
+                <div class="row">
+                    {% for offres in offre %}
+                        <div class="col-md-6 col-sm-6">
+                            <div class="panel">
+                                <div class="panel-body">
+                                    <div class="media">
+
+                                        <div class="media-body">
+                                            <h4>{{offres.offre }}</h4>
+
+
+                                                <p class="A"> <strong>Date début: </strong>{{offres.dateDebut|date("m/d/Y")  }}</p><br>
+                                                <p class="A"> <strong>Date fin : </strong>{{offres.dateFin|date("m/d/Y")  }}</p><br>
+                                                
+                                                <a href="{{ path('profile_offre_admin',{'id':offres.id}) }}" class="btn btn-success"><i class="fa fa-eye"></i> Afficher Détails </a>
+                                                <a href="{{ path('delete_offre_admin',{'id':offres.id}) }}" class="btn btn-danger"><i class="fa fa-times"></i> Supprimer </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </section>
+    </section>
+
+{% endblock %}

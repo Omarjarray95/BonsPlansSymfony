@@ -1,0 +1,79 @@
+{% extends 'baseAdmin.html.twig' %}
+
+{% block Afficher_Tout %}
+    <li><a href="{{ path('Afficher_Etablissement_Admin') }}">Afficher Tout</a></li>
+{% endblock %}
+
+{% block Trier %}
+    <li class="dropdown">
+        <a data-toggle="dropdown" data-hover="dropdown" class="dropdown-toggle" href="#"> Trier Par <b
+                    class=" fa fa-angle-down"></b></a>
+        <ul class="dropdown-menu">
+            <li><a href="{{ path('Trier_Etablissement',{'critere':'HOA'}) }}"><i class="fa fa-sort-desc"></i> Horaire
+                    D'Ouverture</a></li>
+            <li><a href="{{ path('Trier_Etablissement',{'critere':'HFD'}) }}"><i class="fa fa-sort-asc"></i> Horaire De
+                    Fermeture</a></li>
+            <li><a href="{{ path('Trier_Etablissement',{'critere':'BMA'}) }}"><i class="fa fa-sort-desc"></i> Budget
+                    Moyen</a></li>
+            <li><a href="{{ path('Trier_Etablissement',{'critere':'BMD'}) }}"><i class="fa fa-sort-desc"></i> Budget
+                    Moyen</a></li>
+        </ul>
+    </li>
+{% endblock %}
+
+{% block Afficher_Etablissement %}
+    <section id="main-content">
+        <section class="wrapper">
+            <div class="directory-info-row">
+                <div class="row">
+
+                    {% for r in recl %}
+                        <div class="col-md-6 col-sm-6">
+                            <div class="panel">
+                                <div class="panel-body">
+                                    <div class="media">
+                                        <div class="media-body">
+                                            <h4>{{ r.sujet }}</h4>
+
+                                            <address>
+                                                <p class="A">{{ r.contenuReclamation }}</p><br>
+                                                <a href="{{ path('supprimer_recl_admin',{'id':r.id}) }}"
+                                                   class="btn btn-danger"><i class="fa fa-times"></i> Supprimer </a>
+                                            </address>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    {% endfor %}
+                    <br clear="left">
+                    <div class="col-md-12 col-sm-12">
+                        <div class="panel">
+                            <div class="panel-body">
+                                <div class="media">
+                                    <div class="media-body">
+                                        <br clear="left">
+                                        <div class="navigation">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <br clear="left">
+                    <div class="row" style="padding-left: 40px;">
+                        <div class="col-lg-3">
+                            <form action="{{ path('allReclamations_chercher_admin') }}" method="get">
+                                <input name="q" type="text" class="form-control search"
+                                       placeholder="Que cherchez vous ?" style="border-color: lightgrey">
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </section>
+
+{% endblock %}

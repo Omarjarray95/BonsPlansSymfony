@@ -1,0 +1,110 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+<section id="main-content">
+    <section class="wrapper">
+        <div class="container padding">
+            <div class="col-lg-12 col-sm-offset-3">
+{{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register','id':'ABCDEF'}}) }}
+                <h2 class="form-signin-heading BA col-sm-offset-2">S'Inscrire</h2>
+                <table>
+    <tr>
+        <td width="200px">
+            <strong class="BA">Pseudo</strong>
+        </td>
+        <td>
+            {{ form_widget(form.username, {'attr':{'style':'width:300px'}}) }}
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <strong>E-Mail</strong>
+        </td>
+        <td>
+            {{ form_widget(form.email, {'attr':{'style':'width:300px'}}) }}
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <strong>Nom & Prénom</strong>
+        </td>
+        <td>
+            {{ form_widget(form.nom, {'attr':{'style':'width:300px'}}) }}
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <strong>Mot De Passe</strong>
+        </td>
+        <td>
+            {{ form_widget(form.plainPassword.first, {'attr':{'style':'width:300px'}}) }}
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <strong>Confirmer Le Mot De Passe</strong>
+        </td>
+        <td>
+            {{ form_widget(form.plainPassword.second, {'attr':{'style':'width:300px'}}) }}
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <strong>Sexe</strong>
+        </td>
+        <td>
+            {{ form_widget(form.sexe) }}
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <strong>Date De Naissance</strong>
+        </td>
+        <td>
+            {{ form_widget(form.datedenaissance, {'attr':{'style':'width:300px'}}) }}
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <strong>Ville</strong>
+        </td>
+        <td>
+            {{ form_widget(form.ville, {'attr':{'style':'width:300px'}}) }}
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <strong>Numéro</strong>
+        </td>
+        <td>
+            {{ form_widget(form.phone, {'attr':{'style':'width:300px'}}) }}
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <strong>Site Web/Blog</strong>
+        </td>
+        <td>
+            {{ form_widget(form.url, {'attr':{'style':'width:500px'}}) }}
+        </td>
+    </tr>
+    <tr>
+        <td>
+
+        </td>
+        <td>
+            <input class="btn btn-default col-sm-offset-0" type="submit" value="S'Inscrire" />
+        </td>
+    </tr>
+    <tr>
+        <td>
+
+        </td>
+        <td>
+            {{ form_end(form) }}
+        </td>
+    </tr>
+</table>
+            </div>
+        </div>
+    </section>
+</section>

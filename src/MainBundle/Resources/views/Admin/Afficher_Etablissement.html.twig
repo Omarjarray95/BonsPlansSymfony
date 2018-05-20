@@ -1,0 +1,68 @@
+{% extends 'baseAdmin.html.twig' %}
+
+{% block Afficher_Tout %}
+    <li><a href="{{ path('Afficher_Etablissement_Admin') }}">Afficher Tout</a></li>
+{% endblock %}
+
+{% block Trier %}
+    <li class="dropdown">
+        <a data-toggle="dropdown" data-hover="dropdown" class="dropdown-toggle" href="#"> Trier Par <b class=" fa fa-angle-down"></b></a>
+        <ul class="dropdown-menu">
+            <li><a href="{{ path('Trier_Etablissement',{'critere':'HOA'}) }}"><i class="fa fa-sort-desc"></i> Horaire D'Ouverture</a></li>
+            <li><a href="{{ path('Trier_Etablissement',{'critere':'HFD'}) }}"><i class="fa fa-sort-asc"></i> Horaire De Fermeture</a></li>
+            <li><a href="{{ path('Trier_Etablissement',{'critere':'BMA'}) }}"><i class="fa fa-sort-desc"></i> Budget Moyen</a></li>
+            <li><a href="{{ path('Trier_Etablissement',{'critere':'BMD'}) }}"><i class="fa fa-sort-desc"></i> Budget Moyen</a></li>
+        </ul>
+    </li>
+{% endblock %}
+
+{% block Afficher_Etablissement %}
+    <section id="main-content">
+        <section class="wrapper">
+            <div class="directory-info-row">
+                <div class="row">
+                    {% for etablissements in eta %}
+                        <div class="col-md-6 col-sm-6">
+                            <div class="panel">
+                                <div class="panel-body">
+                                    <div class="media">
+                                        <a class="pull-left" href="#">
+                                            <img class="thumb media-object" src="{{ asset('img/' ~ etablissements.imagePrincipale) }}" alt="">
+                                        </a>
+                                        <div class="media-body">
+                                            <h4>{{ etablissements.nom }}</h4>
+                                            <ul class="social-links">
+                                                <li><a title="" data-placement="top" data-toggle="tooltip" class="tooltips" href="{{ etablissements.url }}" data-original-title="Lien Externe"><i class="fa fa-external-link-square"></i></a></li>
+                                            </ul>
+                                            <address>
+                                                {% if etablissements.type!='Autres' %}
+                                                    <strong><p class="A">{{ etablissements.type }}</p></strong><br>
+                                                {% else %}
+                                                    <strong><p class="A">{{ etablissements.typeLoisirs }}</p></strong><br>
+                                                {% endif %}
+
+                                                <p class="A"><i class="fa fa-home"></i> {{ etablissements.adresse }}</p><br>
+                                                <p class="A"><i class="fa fa-clock-o"></i> {{ etablissements.horaireOuverture | date('H:i') }}-{{ etablissements.horaireFermeture | date('H:i') }}</p> <br>
+                                                <p class="A"><i class="fa fa-phone"></i>  {{ etablissements.numTel }}</p><br>
+                                                <p class="A"><i class="fa fa-money"></i> <strong>Budget Moyen :</strong> {{ etablissements.budgetmoyen }} DT </p><br>
+                                                <a href="{{ path('Afficher_Etablissement_ParId_Admin',{'id':etablissements.id}) }}" class="btn btn-success"><i class="fa fa-eye"></i> Afficher Détails </a>
+                                                <br><br>
+                                                <a href="{{ path('add_event_admin',{'id':etablissements.id}) }}" class="btn btn-success"><i class="fa fa-calendar"></i> Ajouter un évenement </a>
+                                                <br><br>
+                                                <a href="{{ path('add_offre_admin',{'id':etablissements.id}) }}" class="btn btn-success"><i class="fa fa-calendar"></i> Ajouter un Offre </a>
+                                                <br><br>
+                                                <a href="{{ path('Supprimer_Etablissement_Admin',{'id':etablissements.id}) }}" class="btn btn-danger"><i class="fa fa-times"></i> Supprimer </a>
+                                            </address>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </section>
+    </section>
+
+{% endblock %}

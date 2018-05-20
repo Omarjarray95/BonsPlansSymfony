@@ -1,0 +1,41 @@
+{% extends 'Base.html.twig' %}
+
+{% block AjouterEtablissement %}
+    <section id="reservation" class="reservation_section bg-grey">
+        <div style="margin-top: 50px" class="container padding">
+            <section id="main-content">
+                <section class="wrapper">
+                    <div class="row">
+                        <div class="col-lg-12 col-sm-offset-0">
+                            <section class="panel" id="ABC">
+                                <header class="panel-heading">
+                                    <strong>Entrez Votre Nouveau Commentaire : </strong>
+                                    <table>
+                                    {{ form_start(form) }}
+                                        <tr>
+                                            <td width="100px">
+                                                <strong>Commentaire</strong>
+                                            </td>
+                                            <td>
+                                                {{ form_widget(form.comment) }}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+
+                                            </td>
+                                            <td>
+                                                {{ form_widget(form.Publier) }}
+                                            </td>
+                                        </tr>
+                                    {{ form_end(form) }}
+                                    </table>
+                                </header>
+                            </section>
+                        </div>
+                    </div>
+                </section>
+            </section>
+        </div>
+    </section>
+{% endblock %}

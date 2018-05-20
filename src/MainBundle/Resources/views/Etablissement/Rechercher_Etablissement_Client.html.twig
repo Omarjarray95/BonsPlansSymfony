@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block Rechercher_Etablissement_Client %}
+    <section class="food_menu bd-bottom padding">
+        <div class="container">
+            <div class="section_heading align-center mb-40 mt-40">
+                <h2>Nos Etablissements</h2>
+            </div>
+            <form action="{{ path('Rechercher_Etablissement_Nom',{'critere2':critere}) }}" method="post">
+                <input style="width: 25%;font-style: italic" id="nomm" name="abc" type="text" class="form-control search mb-15" placeholder="Nom">
+            </form>
+            <p id="hg"></p>
+            <ul class="tab_menu mb-30">
+                <li><a href="{{ path('Trier_Etablissement_Client',{'critere1':'HOA','critere2':critere}) }}"><i class="fa fa-sort-desc"></i> Horaire D'Ouverture</a></li>
+                <li><a href="{{ path('Trier_Etablissement_Client',{'critere1':'HFD','critere2':critere}) }}"><i class="fa fa-sort-asc"></i> Horaire De Fermeture</a></li>
+                <li><a href="{{ path('Trier_Etablissement_Client',{'critere1':'BMA','critere2':critere}) }}"><i class="fa fa-sort-desc"></i> Budget Moyen</a></li>
+                <li><a href="{{ path('Trier_Etablissement_Client',{'critere1':'BMD','critere2':critere}) }}"><i class="fa fa-sort-asc"></i> Budget Moyen</a></li>
+            </ul>
+            <div class="food_list">
+                {% for etablissements in eta %}
+                <div class="col-sm-3 col-xs-6 xs-padding">
+                    <div class="food_content align-center">
+                        <a href="{{ path('Afficher_Etablissement_Client',{'id':etablissements.id}) }}"><img src="{{ asset('img/' ~ etablissements.imagePrincipale) }}" alt="food" style="height: 200px;width: 230px;"></a>
+                        <h3><a style="color: #303133" href="{{ path('Afficher_Etablissement_Client',{'id':etablissements.id}) }}">{{ etablissements.nom }}</a></h3>
+                        <h4 id="hg" style="margin-bottom: 5px" class="price">{{ etablissements.budgetmoyen }} DT</h4>
+                        <p style="font-weight: bold">{{ etablissements.horaireouverture | date('H:i') }}-{{ etablissements.horairefermeture | date('H:i') }}</p>
+                    </div>
+                </div>
+                    {% endfor %}
+            </div>
+        </div>
+    </section><!-- /.food_menu -->
+{% endblock %}

@@ -1,0 +1,105 @@
+<li role="presentation" class="dropdown" onclick="findNotifications();">
+
+    <!-- NOTIFICATIONS ICON SECTION -->
+    <a href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false">
+        <!-- NOTIFICATIONS ICON -->
+        <i class="glyphicon glyphicon-bell"></i>
+        <!-- NOTIFICATIONS NUMBER -->
+        <div id="notificationsNumber">
+            {% if notificationsCount > 0 %}
+                <span class="badge bg-red" id="notificationsCount">{{ notificationsCount }}</span>
+            {% endif %}
+        </div>
+    </a>
+    <!-- END OF NOTIFICATIONS ICON SECTION -->
+
+    <!-- NOTIFICATIONS SECTION -->
+    <ul id="menu1" class="dropdown-menu list-unstyled" role="menu" style="width: 350px; border-top-left-radius: 3px; border-top-right-radius: 3px">
+
+        <!-- NOTIFICATIONS HEADER SECTION -->
+        <div class="panel-heading" style="background-color: rgb(229, 229, 229)">
+            <h3 class="popover-title" style="color: black; background-color: rgb(229, 229, 229); padding: 0px 0px 0.5% 0px; border-bottom: 0px">
+                <strong>Notifications ({{ notificationsCount }} new)</strong>
+            </h3>
+        </div>
+        <!-- NOTIFICATIONS HEADER SECTION -->
+
+        <!-- NOTIFICATIONS CONTENT SECTION -->
+        <div class="panel-body" id="notificationsContent" style="align-items: center; padding: 0px; max-height:250px; overflow-y:auto;">
+            <div class="sk-circle">
+                <div class="sk-circle1 sk-child"></div>
+                <div class="sk-circle2 sk-child"></div>
+                <div class="sk-circle3 sk-child"></div>
+                <div class="sk-circle4 sk-child"></div>
+                <div class="sk-circle5 sk-child"></div>
+                <div class="sk-circle6 sk-child"></div>
+                <div class="sk-circle7 sk-child"></div>
+                <div class="sk-circle8 sk-child"></div>
+                <div class="sk-circle9 sk-child"></div>
+                <div class="sk-circle10 sk-child"></div>
+                <div class="sk-circle11 sk-child"></div>
+                <div class="sk-circle12 sk-child"></div>
+            </div>
+        </div>
+        <!-- END OF NOTIFICATIONS CONTENT SECTION -->
+
+        <!-- NOTIFICATIONS FOOTER SECTION -->
+        <div class="panel-footer" style="background-color: rgb(229, 229, 229)">
+            <h3 class="panel-title" style="color: black" align="center">
+                <span class="fa fa-tasks"></span>
+            </h3>
+        </div>
+        <!-- NOTIFICATIONS HEADER SECTION -->
+
+    </ul>
+    <!-- END OF NOTIFICATIONS SECTION -->
+
+</li>
+
+<script>
+    // Open a connection to the web socket server
+    /*var socketConnection = new WebSocket('ws://localhost:2018');
+    // Register the message callback
+    socketConnection.onmessage = function(e)
+    {
+        alert("message");
+    };
+
+    socketConnection.onopen = function(e)
+    {
+        alert("open");
+    };*/
+
+    var haveContent = false;
+    var searchLocked = false;
+
+    function findNotifications()
+    {
+        // Ignore if its already searching
+        if(searchLocked || haveContent)
+            return;
+
+        // Create a http request instance
+        var xmlHttp = new XMLHttpRequest();
+        // Register the state change callback
+        xmlHttp.onreadystatechange = function()
+        {
+            // Check the response
+            if(xmlHttp.readyState == 4 && xmlHttp.status == 200)
+            {
+                // Remove the notifications number
+                document.getElementById("notificationsContent").innerHTML = xmlHttp.responseText;
+                // Remove the notifications count
+                document.getElementById("notificationsNumber").innerHTML = "";
+                // Reset the locked flag
+                searchLocked = true;
+                // Set the content flag
+                haveContent = true;
+            }
+        }
+        // Create the connection
+        xmlHttp.open("GET", "{{ path('main_bundle_get_notif') }}", true);
+        // Send the request
+        xmlHttp.send(null);
+    }
+</script>

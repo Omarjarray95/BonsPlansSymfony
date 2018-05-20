@@ -1,0 +1,65 @@
+{% extends 'baseAdmin.html.twig' %}
+
+{% block Afficher_Tout %}
+    <li><a href="{{ path('Afficher_Etablissement_Admin') }}">Afficher Tout</a></li>
+{% endblock %}
+
+{% block Trier %}
+    <li class="dropdown">
+        <a data-toggle="dropdown" data-hover="dropdown" class="dropdown-toggle" href="#"> Trier Par <b class=" fa fa-angle-down"></b></a>
+        <ul class="dropdown-menu">
+            <li><a href="{{ path('Trier_Etablissement',{'critere':'HOA'}) }}"><i class="fa fa-sort-desc"></i> Horaire D'Ouverture</a></li>
+            <li><a href="{{ path('Trier_Etablissement',{'critere':'HFD'}) }}"><i class="fa fa-sort-asc"></i> Horaire De Fermeture</a></li>
+            <li><a href="{{ path('Trier_Etablissement',{'critere':'BMA'}) }}"><i class="fa fa-sort-desc"></i> Budget Moyen</a></li>
+            <li><a href="{{ path('Trier_Etablissement',{'critere':'BMD'}) }}"><i class="fa fa-sort-desc"></i> Budget Moyen</a></li>
+        </ul>
+    </li>
+{% endblock %}
+
+{% block Afficher_Etablissement %}
+    <section id="main-content">
+        <section class="wrapper">
+            <div class="directory-info-row">
+                <div class="row">
+                    {% for etablissements in demandes %}
+                        <div class="col-md-6 col-sm-6">
+                            <div class="panel">
+                                <div class="panel-body">
+                                    <div class="media">
+                                        <a class="pull-left" href="#">
+                                            <img class="thumb media-object" src="{{ asset('img/' ~ etablissements.favoris.imagePrincipale) }}" alt="">
+                                        </a>
+                                        <div class="media-body">
+                                            <h4>{{ etablissements.favoris.nom }}</h4>
+                                            <ul class="social-links">
+                                                <li><a title="" data-placement="top" data-toggle="tooltip" class="tooltips" href="{{ etablissements.favoris.url }}" data-original-title="Lien Externe"><i class="fa fa-external-link-square"></i></a></li>
+                                            </ul>
+                                            <address>
+                                                {% if etablissements.favoris.type!='Autres' %}
+                                                    <strong><p class="A">{{ etablissements.favoris.type }}</p></strong><br>
+                                                {% else %}
+                                                    <strong><p class="A">{{ etablissements.favoris.typeLoisirs }}</p></strong><br>
+                                                {% endif %}
+
+                                                <p class="A"><i class="fa fa-home"></i> {{ etablissements.favoris.adresse }}</p><br>
+                                                <p class="A"><i class="fa fa-clock-o"></i> {{ etablissements.favoris.horaireOuverture | date('H:i') }}-{{ etablissements.favoris.horaireFermeture | date('H:i') }}</p> <br>
+                                                <p class="A"><i class="fa fa-phone"></i>  {{ etablissements.favoris.numTel }}</p><br>
+                                                <p class="A"><i class="fa fa-money"></i> <strong>Budget Moyen :</strong> {{ etablissements.favoris.budgetmoyen }} DT </p><br>
+                                                <a href="{{ path('Afficher_Etablissement_ParId_Admin',{'id':etablissements.favoris.id}) }}" class="btn btn-success"><i class="fa fa-eye"></i> Afficher Détails </a>
+                                                <br><br>
+
+                                                <a href="{{ path('contacter_partenaire',{'id':etablissements.favoris.representant.id}) }}" class="btn btn-danger"><i class="fa fa-times"></i> Contacter </a>
+                                            </address>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </section>
+    </section>
+
+{% endblock %}
